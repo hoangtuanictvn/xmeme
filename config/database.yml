@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: xmeme_production
-  username: xmeme
+  host: <%= ENV['XMEME_DATABASE_HOST'] %>
+  database: <%= ENV['XMEME_DATABASE_NAME'] %>
+  username: <%= ENV['XMEME_DATABASE_UNAME'] %>
   password: <%= ENV['XMEME_DATABASE_PASSWORD'] %>
