@@ -1,0 +1,80 @@
+.editor__wrapper {
+    height: calc(100vh - 52px);
+    position: relative;
+    width: 100%;
+    background: #e7e7e77a;
+    .side__bar--wrapper {
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background: #fff;
+        border-right: 1px solid #dddddd;
+        display: flex;
+        z-index: 998;
+        .element-selector {
+            padding: 10px;
+            height: 100%;
+            background: #fff;
+            border-right: 1px solid #e7e7e79d;
+            .top_menu {
+                margin-bottom: 15px;
+            }
+            .add__more--resources {
+                font-size: 30px;
+                font-weight: 700;
+                color: #ffffff;
+                border-radius: 50px;
+                transition: ease-in-out 0.3s;
+                padding: 5px;
+                background:  #3e7ff8;
+                &:hover{
+                    background: #1969fd;
+                }
+            }
+            .component__select {
+                font-size: 50px;
+                padding: 0px 0px 0px 5px !important;
+                color:  #b9b9b9;
+                transition: ease-in-out 0.3s;
+                &:hover{
+                    color: #3e7ff8;
+                }
+            }
+        }
+        .element-detail {
+            padding: 10px;
+            height: 100%;
+            background: #fff;
+            .list__images {
+                .list--item {
+                    display: block;
+                    padding: 5px;
+                    transition: ease-in-out 0.3s;
+                    margin: 3px;
+                    cursor: pointer;
+                    background: rgb(247, 247, 247);
+                    &:hover {
+                        background: rgb(223, 222, 222);
+                    }
+                    .item--image {
+                        width: 160px;
+                    }
+                }
+            }
+        }
+    }
+    .card--editor{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .content--place{
+            border: 1px solid #c3c3c3;
+        }
+    }
+}

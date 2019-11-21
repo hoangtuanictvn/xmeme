@@ -3,10 +3,17 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+// import 'jquery/dist/jquery.slim'
+import 'bootstrap/dist/js/bootstrap.bundle'
+import 'popper.js/dist/esm/popper'
+//import 'konva'
+import 'fabric'
+require("./draw.engine")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

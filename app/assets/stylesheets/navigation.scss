@@ -1,0 +1,86 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/utilities";
+
+.navbar {
+    background: #fff;
+    z-index: 999;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
+    justify-content: space-between; // space out brand from logo
+    padding-top: $navbar-padding-y;
+    padding-right: $navbar-padding-x; // default: null
+    padding-bottom: $navbar-padding-y;
+    padding-left: $navbar-padding-x; // default: null
+  
+    // Because flex properties aren't inherited, we need to redeclare these first
+    // few properties so that content nested within behave properly.
+    %container-flex-properties {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .container,
+    .container-fluid {
+      @extend %container-flex-properties;
+    }
+  
+    @each $breakpoint, $container-max-width in $container-max-widths {
+      > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+        @extend %container-flex-properties;
+      }
+    }
+}
+
+.navbar--top{
+    min-height: 52px;
+    border-bottom: 1px solid #e2e2e2;
+    //box-shadow: 0px 0px 2px 1px rgba(70, 70, 70, 0.15);
+    .logo-container{
+        position: relative;
+        .logo{
+            height: 40px;
+        }
+        .logo-top-anchor{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+        }
+    }
+
+    .navbar__menu--right{
+        .user--menu{
+            margin: 0 !important;
+        }
+        .avatar{
+            border-radius: 20px;
+            border: 1px solid rgb(245, 245, 245);
+            width: 40px;
+            cursor: pointer;
+        }
+        .navbar-nav{
+            .nav-link{
+                color: rgb(131, 131, 131);
+                padding: 0 !important;
+            }
+            .action{
+                cursor: pointer;
+                margin: 0px 3px 0px 3px;
+                padding: 6px 10px 6px 11px;
+                border: 1px solid rgb(235, 235, 235);
+                border-radius: 30px;
+                transition: ease-in-out 0.3s;
+                &:hover{
+                    background: rgb(235, 235, 235);
+                }
+            }
+        }
+    }
+}
+

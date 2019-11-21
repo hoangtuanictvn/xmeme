@@ -25,8 +25,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        current_user.forget
-        current_user = nil
+        @current_user.forget
+        @current_user = nil
+        session[:user_id] = nil
         redirect_to root_url, notice: "Signed out!"
     end
 

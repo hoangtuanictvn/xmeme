@@ -17,6 +17,10 @@ module SessionsHelper
         end
     end
 
+    def authenticated?
+        redirect_to root_url, notice: "Something wrong" unless signed_in? 
+    end
+
     def signed_in?
       !!current_user
     end

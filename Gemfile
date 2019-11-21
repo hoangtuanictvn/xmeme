@@ -15,6 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'font-awesome-sass', '~> 5.11.2'
 
 # gem 'image_processing', '~> 1.2'
 

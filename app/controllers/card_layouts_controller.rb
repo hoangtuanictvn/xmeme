@@ -1,0 +1,3 @@
+class CardLayoutsController < ApplicationController
+    
+end
