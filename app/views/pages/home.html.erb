@@ -8,11 +8,12 @@
                 <div class="header mb-5">
                     <h3 class="text-center">登録</h3>
                 </div>
+                <% unless signed_in? %>
                 <div class="signup--form">
                     <div class="row justify-content-center mb-2">
-                        <a href="" class="btn btn-social btn-facebook">
+                        <%= link_to "/auth/facebook", class:"btn btn-social btn-facebook" do %>
                             <span class="fa fa-facebook"></span>ファスプークを使う
-                        </a>
+                        <% end %>
                     </div>
                     <div class="row justify-content-center">
                         <a href="" class="btn btn-social btn-twitter">
@@ -20,6 +21,9 @@
                         </a>
                     </div>
                 </div>
+                <% else %>
+                    <h1>Xin chao <%= @current_user&.name %>
+                <% end %>
             </div>
         </div>
     </div>

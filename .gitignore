@@ -59,3 +59,6 @@ node_modules/
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Local run and build script
+local.sh
