@@ -12,13 +12,13 @@
                 <div class="signup--form">
                     <div class="row justify-content-center mb-2">
                         <%= link_to "/auth/facebook", class:"btn btn-social btn-facebook" do %>
-                            <span class="fa fa-facebook"></span>ファスプークを使う
+                            <span class="ti-facebook"></span>ファスプークを使う
                         <% end %>
                     </div>
                     <div class="row justify-content-center">
-                        <a href="" class="btn btn-social btn-twitter">
-                            <span class="fa fa-twitter"></span>トィッタを使う
-                        </a>
+                        <%= link_to "/auth/twitter", class:"btn btn-social btn-twitter" do %>
+                            <span class="ti-twitter"></span>トィッタを使う
+                        <% end %>
                     </div>
                 </div>
                 <% else %>

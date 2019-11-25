@@ -39,7 +39,7 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1) !
         top: 0;
         bottom: 0;
         width: $bs-height-base;
-        line-height: ($bs-height-base + 2);
+        line-height: ($bs-height-base + 0.5);
         font-size: 1.6em;
         text-align: center;
         border-right: 1px solid rgba(0, 0, 0, 0.2);
@@ -101,7 +101,7 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1) !
 }
 
 @mixin btn-social($color-bg, $color: #fff) {
-    background-color: $color-bg;
+    width: 40%;
     @include button-variant($color-bg, #0000, $color, $color-bg, rgba(0,0,0,.2));
 }
 

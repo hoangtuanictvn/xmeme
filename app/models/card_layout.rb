@@ -1,0 +1,2 @@
+class CardLayout < ApplicationRecord
+end

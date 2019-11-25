@@ -1,0 +1,44 @@
+<div class="editor__wrapper">
+    <div class="side__bar--wrapper flex-row">
+        <div class="element-selector">
+            <ul class="nav flex flex-column">
+                <li class="nav-item dropright top_menu">
+                    <a class="nav-link add__more--resources text-center" href="#" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Add more resources"><i class="ti-plus"></i></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/"><i class="ti-gallery"></i> 画像</a>
+                        <a class="dropdown-item"><i class="ti-text"></i> 文字</a>
+                        <a class="dropdown-item"><i class="ti-music"></i> 音楽</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link component__select" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Change style"><i class="ti-layout"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link component__select" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Change size"><i class="ti-layers-alt"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="element-detail">
+            <ul class="nav flex-column list__images">
+                <li class="nav-item">
+                    <a class="list--item">
+                        <%= image_tag "bg_christmas.jpg", class:"item--image" %>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="list--item">
+                        <%= image_tag "bg_christmas_2.jpg", class:"item--image" %>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="list--item">
+                        <img class="item--image"/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card--editor">
+        <canvas class="content--place" id="edit__content--place" width="400px" height="600px">
+    </div>
+</div>

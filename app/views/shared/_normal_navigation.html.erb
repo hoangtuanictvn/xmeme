@@ -1,0 +1,46 @@
+<div class="navbar navbar--top">
+    <div class="container-fluid px-5">
+        <div class="logo-container">
+            <%= link_to builder_path do %>
+                <% #= image_tag "bauble.png", class: "logo-top-anchor" %>
+                <%= image_tag "logo_gradient.png", class: "logo" %>
+            <% end %>
+        </div>
+        <div class="navbar__menu--right navbar-expand">
+            <% if editor %>
+                <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                    <li class="nav-item dropdown action jsSave">
+                        <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="saveAction">
+                            <i class="ti-save"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="saveAction" >
+                            <a class="dropdown-item" href="/"><i class="ti-file"></i> PDFを保存する</a>
+                            <a class="dropdown-item jsActionSaveImage"><i class="ti-image"></i> JPGを保存する</a>
+                        </div>
+                    </li>
+                    <li class="nav-item action jsShare">
+                        <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="shareAction">
+                            <i class="ti-share"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shareAction" >
+                            <a class="dropdown-item" href="/"><i class="ti-facebook"></i> Facebook</a>
+                            <a class="dropdown-item" href="/"><i class="ti-twitter"></i> Twitter</a>
+                        </div>
+                    </li>
+                </ul>
+            <% else %>
+                <ul class="user--menu dropdown">
+                    <a class="avatar-wrapper" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuLink">
+                        <%= image_tag @current_user.picture, class:"avatar" %>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" >
+                        <a class="dropdown-item" href="/"><%= @current_user.name %></a>
+                        <a class="dropdown-item" href="/">カード管理</a>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "ログアウト", logout_path, class:"dropdown-item", method: :delete%>
+                    </div>
+                </ul>
+            <% end %>
+        </div>
+    </div>
+</div>

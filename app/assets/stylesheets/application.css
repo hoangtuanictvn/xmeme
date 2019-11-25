@@ -1,6 +1,9 @@
 /*
  *= require ./bootstrap/bootstrap
  *= require pages
- *= require ./lib/bootstrap-social.css
+ *= require navigation
+ *= require cards
+ *= require ./lib/bootstrap-social
+ *= require ./lib/themify-icons
  *= require_self
  */

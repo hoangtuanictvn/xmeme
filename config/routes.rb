@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "sessions#failure"
-  post :logout, to: "sessions#destroy"
-  
+  delete :logout, to: "sessions#destroy"
+  get :builder, to: "cards#edit"
+  resources :cards
 end
