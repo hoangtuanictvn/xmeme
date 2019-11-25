@@ -9,6 +9,7 @@ import 'popper.js/dist/esm/popper'
 //import 'konva'
 import 'fabric'
 require("./draw.engine")
+require("./utilities")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()

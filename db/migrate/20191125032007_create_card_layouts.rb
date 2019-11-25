@@ -6,6 +6,7 @@ class CreateCardLayouts < ActiveRecord::Migration[6.0]
       t.integer :width
       t.integer :height
       t.decimal :ratio
+      t.string :tag
 
       t.timestamps
     end

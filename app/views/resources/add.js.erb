@@ -1,0 +1,38 @@
+var element_detail = $('.element-detail');
+if(element_detail){
+    switch("<%= @type %>"){
+        case "image":
+            element_detail.html('<%= j render partial: "list_image"%>');
+            if(window.CANVAS){
+                imageInsertDelegate(window.CANVAS)
+            }
+            break;
+        case "template":
+            element_detail.html('<%= j render partial: "list_template"%>'); break;
+        case "layout":
+            element_detail.html('<%= j render partial: "list_layout", locals:{layouts: @layouts}%>'); break;
+        case "text":
+            element_detail.html('<%= j render partial: "text_edit"%>'); break;
+        case "music":
+            break;
+        default: break;
+    }
+}
+
+function imageInsertDelegate(canvas){
+    $('.jsImageInsert').each(function(e){
+        $(this).on('click', function(ev){
+            var imageUrl = $(this).data('image-cdn');
+            fabric.Image.fromURL(imageUrl, function(img){
+                canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
+                    // Optionally add an opacity lvl to the image
+                    backgroundImageOpacity: 0.5,
+                    // should the image be resized to fit the container?
+                    backgroundImageStretch: true,
+                    scaleX: canvas.width / img.width,
+                    scaleY: canvas.height / img.height
+                });
+            });
+        });
+    })
+}

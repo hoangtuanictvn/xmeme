@@ -43,10 +43,18 @@
             }
         }
         .element-detail {
-            padding: 10px;
             height: 100%;
             background: #fff;
+            overflow-y: scroll;
+            .holder_text {
+                margin-top: 40px;
+                span {
+                    font-size: 12px;
+                    font-weight: 200;
+                }
+            }
             .list__images {
+                padding: 10px;
                 .list--item {
                     display: block;
                     padding: 5px;

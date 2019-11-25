@@ -3,7 +3,9 @@
         <div class="element-selector">
             <ul class="nav flex flex-column">
                 <li class="nav-item dropright top_menu">
-                    <a class="nav-link add__more--resources text-center" href="#" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Add more resources"><i class="ti-plus"></i></a>
+                    <a class="nav-link add__more--resources text-center" href="#" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Add more resources">
+                        <i class="ti-plus"></i>
+                    </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/"><i class="ti-gallery"></i> 画像</a>
                         <a class="dropdown-item"><i class="ti-text"></i> 文字</a>
@@ -39,6 +41,6 @@
         </div>
     </div>
     <div class="card--editor">
-        <canvas class="content--place" id="edit__content--place" width="400px" height="600px">
+        <canvas class="content--place" id="edit__content--place" width="<%= @layout.width*@layout.ratio %>px" height="<%= @layout.height*@layout.ratio %>px">
     </div>
 </div>
