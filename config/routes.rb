@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "sessions#failure"
   delete :logout, to: "sessions#destroy"
-  get :builder, to: "cards#edit"
+  get :layouts, to: "card_layouts#index"
+  post :add,  to: "resources#add"
+
   resources :cards
 end

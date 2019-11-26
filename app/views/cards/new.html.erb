@@ -1,0 +1,36 @@
+<div class="editor__wrapper">
+    <div class="side__bar--wrapper flex-row">
+        <div class="element-selector">
+            <ul class="nav flex flex-column">
+                <li class="nav-item dropright top_menu">
+                    <a class="nav-link add__more--resources text-center" href="#" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Add more resources"><i class="ti-plus"></i></a>
+                    <div class="dropdown-menu">
+                        <%= link_to add_path(add: :image), class:"dropdown-item", method: :post, remote: true do %>
+                            <i class="ti-gallery"></i> 画像
+                        <% end %>
+                        <%= link_to add_path(add: :text), class:"dropdown-item", method: :post, remote: true do %>
+                            <i class="ti-text"></i> 文字
+                        <% end %>
+                        <%= link_to add_path(add: :music), class:"dropdown-item", method: :post, remote: true do %>
+                            <i class="ti-music"></i> 音楽
+                        <% end %>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <%= link_to add_path(add: :layout), class:"nav-link component__select", title:"Change style", method: :post, remote: true do %>
+                        <i class="ti-layout"></i>
+                    <% end %>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link component__select" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Change size"><i class="ti-layers-alt"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="element-detail">
+            <%= render partial: "resources/list_layout", locals:{layouts: @layouts} %>
+        </div>
+    </div>
+    <div class="card--editor">
+        <canvas class="content--place" id="edit__content--place" width="<%= @layout.width*@layout.ratio %>px" height="<%= @layout.height*@layout.ratio %>px">
+    </div>
+</div>

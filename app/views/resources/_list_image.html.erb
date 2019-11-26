@@ -1,0 +1,9 @@
+<ul class="nav flex-column list__images">
+    <% (1..10).each do |index| %>
+        <li class="nav-item">
+            <a class="list--item jsImageInsert" id="image-<%= index%>" data-image-cdn="<%= url_to_image("resources/background/#{index}.jpg") %>">
+                <%= image_tag "resources/background/#{index}.jpg", class:"item--image" %>
+            </a>
+        </li>
+    <% end %>
+</ul>
