@@ -1,9 +1,15 @@
 <ul class="nav flex-column list__images">
-    <% (1..10).each do |index| %>
-        <li class="nav-item">
-            <a class="list--item jsImageInsert" id="image-<%= index%>" data-image-cdn="<%= url_to_image("resources/background/#{index}.jpg") %>">
-                <%= image_tag "resources/background/#{index}.jpg", class:"item--image" %>
+    <% resources&.each do |resource| %>
+        <li class="nav-item dropright">
+            <a class="list--item" id="image-<%= resource.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag resource.container.url, class:"item--image" %>
             </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item menu_action jsInsertImage" data-image-cdn="<%= resource.container.url %>" data-type="<%= resource.resource_type %>"><i class="ti-gallery"></i> 挿入</a>
+                <% if resource.resource_type == "image" %>
+                    <a class="dropdown-item menu_action jsInsertBackground" data-image-cdn="<%= resource.container.url %>" data-type="<%= resource.resource_type %>"><i class="ti-image"></i> 背景</a>
+                <% end %>
+            </div>
         </li>
     <% end %>
 </ul>

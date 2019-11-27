@@ -14,7 +14,7 @@
                             <i class="ti-save"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="saveAction" >
-                            <a class="dropdown-item" href="/"><i class="ti-file"></i> PDFを保存する</a>
+                            <a class="dropdown-item" href="#" data-layout-id="<%= @layout.id if @layout.present? %>" data-user-id="<%= @current_user.id if @current_user.present? %>"><i class="ti-file"></i> ドラフトを保存する</a>
                             <a class="dropdown-item jsActionSaveImage"><i class="ti-image"></i> JPGを保存する</a>
                         </div>
                     </li>

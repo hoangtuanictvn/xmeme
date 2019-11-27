@@ -1,0 +1,15 @@
+<%= form_for @resource, method: :post do |f| %>
+    <div class="form-group">
+        <%= f.label :container %>
+        <%= f.file_field :container, multiple: false, class:"form-control-file" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :resource_type %>
+        <%= f.select :resource_type, Resource.resource_types.keys.collect {|u| [u.titleize, u]},class:"form-control"%>
+    </div>
+    <div class="form-group">
+        <%= f.label :card_layout_id %>
+        <%= f.select :card_layout_id, @layout_options, class:"form-control"%>
+    </div>
+    <button type="submit" >Upload</button>
+<% end %>

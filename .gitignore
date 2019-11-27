@@ -62,3 +62,4 @@ yarn-debug.log*
 
 # Local run and build script
 local.sh
+/public/resources

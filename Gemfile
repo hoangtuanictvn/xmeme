@@ -16,6 +16,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'font-awesome-sass', '~> 5.11.2'
+gem 'carrierwave', '~> 2.0'
 
 # gem 'image_processing', '~> 1.2'
 

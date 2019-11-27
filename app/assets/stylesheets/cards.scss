@@ -55,6 +55,9 @@
             }
             .list__images {
                 padding: 10px;
+                .menu_action{
+                    cursor: pointer;
+                }
                 .list--item {
                     display: block;
                     padding: 5px;

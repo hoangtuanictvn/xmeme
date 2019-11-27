@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "sessions#failure"
   delete :logout, to: "sessions#destroy"
   get :layouts, to: "card_layouts#index"
-  post :add,  to: "resources#add"
-
+  post "layout/change", to: "card_layouts#change"
+  post :add, to: "resources#add"
+  get :upload, to: "upload#index"
   resources :cards
+  resources :resources
 end
