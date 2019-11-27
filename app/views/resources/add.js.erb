@@ -1,8 +1,9 @@
 var element_detail = $('.element-detail');
 if(element_detail){
     switch("<%= @type %>"){
+        case "sticker":
         case "image":
-            element_detail.html('<%= j render partial: "list_image"%>');
+            element_detail.html('<%= j render partial: "list_image", locals:{resources: @resources, sticker: @type == "sticker"} if @type == "image" || @type == "sticker"%>');
             if(window.CANVAS){
                 imageInsertDelegate(window.CANVAS)
             }
@@ -12,19 +13,46 @@ if(element_detail){
         case "layout":
             element_detail.html('<%= j render partial: "list_layout", locals:{layouts: @layouts}%>'); break;
         case "text":
-            element_detail.html('<%= j render partial: "text_edit"%>'); break;
+            element_detail.html('<%= j render partial: "text_edit"%>');
+            textEditableDelegate(window.CANVAS)
+            break;
         case "music":
             break;
         default: break;
     }
 }
 
+<%# function textInsertDelegate(canvas){
+    var text = new fabric.Text('New content', { 
+        fontFamily: 'Delicious_100', 
+        left: 10,
+        top: 100
+    });
+    text.set('meta_tag','text');
+    canvas.add(text);
+} %>
+
 function imageInsertDelegate(canvas){
-    $('.jsImageInsert').each(function(e){
+    $('.jsInsertImage').each(function(e){
         $(this).on('click', function(ev){
             var imageUrl = $(this).data('image-cdn');
+            var type = $(this).data('type');
             fabric.Image.fromURL(imageUrl, function(img){
-                canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
+                img.set('meta_tag',type)
+                img.scaleToHeight(canvas.height/2);
+                img.scaleToWidth(canvas.width/2);
+                canvas.add(img)
+            });
+        });
+    })
+
+    $('.jsInsertBackground').each(function(e){
+        $(this).on('click', function(ev){
+            var imageUrl = $(this).data('image-cdn');
+            var type = $(this).data('type');
+            fabric.Image.fromURL(imageUrl, function(img){
+                img.set('meta_tag',type)
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
                     // Optionally add an opacity lvl to the image
                     backgroundImageOpacity: 0.5,
                     // should the image be resized to fit the container?
@@ -35,4 +63,25 @@ function imageInsertDelegate(canvas){
             });
         });
     })
+}
+
+function textEditableDelegate(canvas){
+    $('.jsInsertNewText').submit(function(e) {
+        e.preventDefault()
+        var textContent = $(e.target).find('input#text_content').val()
+        var textFont = $(e.target).find('select#text_font').val()
+        var textSize = $(e.target).find('input#text_size').val()
+        var textColor = $(e.target).find('input#text_color').val()
+        //var textAlign = $(e.target).find('input#text_size').val()
+        console.log(textColor)
+        var text = new fabric.Text(textContent, { 
+            fontFamily: textFont,
+            size: 14,
+            left: 10,
+            top: 100,
+            fill: textColor
+        });
+        text.set('meta_tag','text');
+        canvas.add(text);
+    });
 }

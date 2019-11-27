@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_021816) do
+ActiveRecord::Schema.define(version: 2019_11_27_025701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 2019_11_26_021816) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.integer "type"
+    t.text "data"
+    t.string "hash"
+    t.json "format"
+    t.integer "render_status"
+    t.string "url"
+    t.text "thumb"
+    t.decimal "width"
+    t.decimal "height"
+    t.boolean "is_template"
+    t.integer "card_layout_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "identifies", force: :cascade do |t|
     t.integer "user_id"
     t.string "provider"
@@ -35,9 +52,9 @@ ActiveRecord::Schema.define(version: 2019_11_26_021816) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.integer "type"
+    t.integer "resource_type"
     t.string "data"
-    t.string "url"
+    t.string "container"
     t.string "format"
     t.integer "card_layout_id"
     t.datetime "created_at", precision: 6, null: false

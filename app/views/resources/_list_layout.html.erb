@@ -2,7 +2,7 @@
     <div class="title"><h5>レイアウト一覧</h5></div>
     <div class="card--layout_list d-flex flex-column justify-content-center justify-content-sm-center mt-1">
         <% layouts.each do |clayout| %>
-            <%= link_to "#", class:"item--layout mx-auto", method: :post , remote: true do %>
+            <%= link_to layout_change_path(id: clayout.id), class:"item--layout mx-auto", method: :post , remote: true do %>
                 <div class="thumb" style="width:<%= clayout.width/8 %>px; height:<%= clayout.height/8 %>px" data-toggle="tooltip" data-placement="right" title="<%= clayout.name %>">
                     <i class="layout--icon ti-<%= clayout.tag %>" style="line-height:<%= clayout.height/8 %>px;"></i>
                 </div>
