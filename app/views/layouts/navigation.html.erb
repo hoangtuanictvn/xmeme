@@ -10,7 +10,7 @@
   </head>
 
   <body class="<%= "#{parent_class}page" %>">
-    <%= render partial: "shared/normal_navigation", locals:{editor: true} %>
+    <%= render partial: "shared/normal_navigation", locals:{editor: params[:action] == "edit" && self.controller_name == "cards"} %>
     <%= yield %>
   </body>
 </html>

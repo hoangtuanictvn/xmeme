@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_reader :remember_token
   has_many :identifies
+  has_many :cards
 
   def self.create_by_omniauth auth
     create! do |user|

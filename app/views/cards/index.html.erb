@@ -1,0 +1,53 @@
+<div class="card-list container">
+    <div class="row">
+        <div class="col-md-3 mb-2">
+            <%= link_to cards_path(layout_id: 1, uid: @current_user.id), class:"link", remote: true, method: :post do %>
+            <div class="card add-new-card py-2">
+                <div class="plus-button"><i class="ti-plus"></i></div>
+            </div>
+            <% end %>
+        </div>
+        <% @cards.each do |card| %>
+            <div class="col-md-3 mb-2">
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-img-top" style="background: url(<%= card.thumb %>)"></div>
+                        <img class="thumb" src="<%= card.thumb %>"/>
+                        <div class="top-menu">
+                            <div class="menu-anchor">
+                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="editAction"><i class="ti-more"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="editAction" >
+                                    <%= link_to edit_card_path(card), class:"dropdown-item", data: { turbolinks: false } do %><i class="ti-wand"></i> 編集<% end %>
+                                    <%= link_to card_path(card), class:"dropdown-item", method: :delete, data: { confirm: '同意しませんか?' } do %>
+                                        <i class="ti-trash"></i> 削除
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--div class="card-body">
+                        <span class="card-title">Card name</span>
+                    </div-->
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img class="rounded mr-2" alt="...">
+    <strong class="mr-auto">Bootstrap</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
+<script>
+// $(document).ready(function(params) {
+//     $('.toast').toast('show')
+// })
+</script>
