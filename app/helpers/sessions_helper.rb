@@ -29,7 +29,11 @@ module SessionsHelper
         if ident.try(:user).present?
             update_current_user ident.user
             ident.user.remember
-            redirect_to root_url, :notice => "Signed in!"
+            if ident.try(:user).first_time
+                redirect_to layouts_path, :notice => "Signed in!"
+            else
+                redirect_to cards_path, :notice => "Signed in!"
+            end
         else
             redirect_to root_url, notice: "Something wrong"
         end

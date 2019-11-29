@@ -3,7 +3,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
     create_table :cards do |t|
       t.integer :type
       t.text :data
-      t.string :hash
+      t.string :code
       t.json :format
       t.integer :render_status
       t.string :url

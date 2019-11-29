@@ -11,15 +11,36 @@ if(element_detail){
         case "template":
             element_detail.html('<%= j render partial: "list_template"%>'); break;
         case "layout":
-            element_detail.html('<%= j render partial: "list_layout", locals:{layouts: @layouts}%>'); break;
+            element_detail.html('<%= j render partial: "list_layout", locals:{layouts: @layouts}%>');
+            window.updateCardLayoutTrigger();
+            break;
         case "text":
-            element_detail.html('<%= j render partial: "text_edit"%>');
-            textEditableDelegate(window.CANVAS)
+            if("<%= params[:modify] %>" == "true"){
+                element_detail.html('<%= j render partial: "text_edit"%>');
+                textEditableDelegate(window.CANVAS)
+            }else{
+                element_detail.html('<%= j render partial: "text_new"%>');
+                textNewDelegate(window.CANVAS)
+            }
             break;
         case "music":
             break;
         default: break;
     }
+    var changeAction = $('.jsObjectDropAction')
+    changeAction.on('click', function(e){
+        e.preventDefault()
+        if(window.CANVAS){
+            alert('削除同意しますか？')
+            window.CANVAS.remove(window.CANVAS.getActiveObject());
+            changeAction.removeClass('show')
+        }
+    })
+    <% if params[:modify] == "true" %>
+        changeAction.addClass('show')
+    <% else %>
+        changeAction.removeClass('show')
+    <% end %>
 }
 
 <%# function textInsertDelegate(canvas){
@@ -38,7 +59,9 @@ function imageInsertDelegate(canvas){
             var imageUrl = $(this).data('image-cdn');
             var type = $(this).data('type');
             fabric.Image.fromURL(imageUrl, function(img){
-                img.set('meta_tag',type)
+                mapObjectAttribute(img)
+                img.cornerStyle = 'circle'
+                img.set('meta_tag', type)
                 img.scaleToHeight(canvas.height/2);
                 img.scaleToWidth(canvas.width/2);
                 canvas.add(img)
@@ -51,6 +74,7 @@ function imageInsertDelegate(canvas){
             var imageUrl = $(this).data('image-cdn');
             var type = $(this).data('type');
             fabric.Image.fromURL(imageUrl, function(img){
+                mapObjectAttribute(img)
                 img.set('meta_tag',type)
                 canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
                     // Optionally add an opacity lvl to the image
@@ -60,12 +84,36 @@ function imageInsertDelegate(canvas){
                     scaleX: canvas.width / img.width,
                     scaleY: canvas.height / img.height
                 });
+                canvas.fire('background:change', { target: 'image' });
             });
         });
     })
 }
 
 function textEditableDelegate(canvas){
+    var activeObject = canvas.getActiveObject();
+    if(activeObject.meta_tag == "text"){
+        $('.jsEditText #text_content').val(activeObject.text)
+        $('.jsEditText #text_font').val(activeObject.fontFamily)
+        $('.jsEditText #text_color').val(activeObject.fill)
+        $('.jsEditText').submit(function(e) {
+            e.preventDefault()
+            var textContent = $(e.target).find('input#text_content').val()
+            var textFont = $(e.target).find('select#text_font').val()
+            var textSize = $(e.target).find('input#text_size').val()
+            var textColor = $(e.target).find('input#text_color').val()
+            console.log(textContent+"|"+textFont + "|" + textSize + "|" + textColor)
+            activeObject.set({
+                text: textContent,
+                fontFamily: textFont,
+                fill: textColor
+            });
+            canvas.renderAll()
+        });
+    }
+}
+
+function textNewDelegate(canvas){
     $('.jsInsertNewText').submit(function(e) {
         e.preventDefault()
         var textContent = $(e.target).find('input#text_content').val()
@@ -74,14 +122,26 @@ function textEditableDelegate(canvas){
         var textColor = $(e.target).find('input#text_color').val()
         //var textAlign = $(e.target).find('input#text_size').val()
         console.log(textColor)
-        var text = new fabric.Text(textContent, { 
+        var text = new fabric.IText(textContent, { 
             fontFamily: textFont,
             size: 14,
             left: 10,
             top: 100,
             fill: textColor
         });
+        mapObjectAttribute(text)
+        text.cornerStyle = 'circle'
         text.set('meta_tag','text');
         canvas.add(text);
     });
+}
+
+function mapObjectAttribute(object){
+    object.toObject = (function(toObject) {
+    return function() {
+        return fabric.util.object.extend(toObject.call(this), {
+            meta_tag: this.meta_tag
+        });
+    };
+    })(object.toObject);
 }

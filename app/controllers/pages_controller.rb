@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+    before_action :check_signed_in?
+
     def index
         if valid_page?
             render template: "pages/#{params[:page]}"
@@ -10,5 +12,10 @@ class PagesController < ApplicationController
     private
     def valid_page?
         File.exist? Pathname.new(Rails.root + "app/views/pages/#{params[:page]}.html.erb")
+    end
+    
+    private
+    def check_signed_in?
+        redirect_to cards_path if signed_in?
     end
 end

@@ -89,3 +89,86 @@
         }
     }
 }
+
+.card-list {
+    margin-top: 30px;
+    .link{
+        text-decoration: none;
+    }
+    .card{
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+        &:hover {
+            box-shadow: 1px 1px 8px 1px #6b6b6b38;
+        }
+    }
+    .add-new-card{
+        height: 100%;
+        background: #fff;
+        .plus-button {
+            background: #3e7ff8;
+            padding: 15px 22px 15px 22px;
+            color: #fff;
+            border-radius: 50px;
+            display: inline;
+            margin: auto;
+            font-size: 30px;
+            transition: ease-in-out 0.3s;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    .card-top {
+        background-color: rgba(0,0,0,.7);
+        height: 120px;
+        display: flex;
+        position: relative;
+        background-size: 150%;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        overflow: hidden;
+        -webkit-mask-image: -webkit-radial-gradient(#fff,#000);
+        mask-image: -webkit-radial-gradient(#fff,#000);
+        .card-img-top {
+            height: 100%;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            transition: all 0.25s ease-in-out;
+            -webkit-filter: blur(20px) brightness(.8) saturate(1.6);
+            filter: blur(20px) brightness(.8) saturate(1.6);
+            -webkit-transform: scale(1.5) translateZ(0);
+            transform: scale(1.5) translateZ(0);
+        }
+        .thumb{
+            height: 70%;
+            z-index: 99;
+            margin: auto;
+        }
+        .top-menu{
+            background: #fff;
+            padding: 5px 5px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 30px;
+            line-height: 0 !important;
+            transition: ease-in-out 0.3s;
+            &:hover {
+                background: rgb(243, 243, 243);
+            }
+            .menu-anchor{
+                position: relative;
+                .action-list{
+                    position: absolute;
+                    list-style: none;
+                }
+            }
+        }
+    }
+    .card-body{
+        padding: 2px 10px;
+    }
+}
