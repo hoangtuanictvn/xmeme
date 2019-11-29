@@ -1,0 +1,37 @@
+<div class="text__edit--wrapper">
+    <div class="title"><h5>Edit Text</h5></div>
+    <form class="jsInsertNewText">
+        <div class="form-group">
+            <label for="text_content">内容</label>
+            <input type="text" name="text_content" class="form-control" id="text_content"  placeholder="テッキッストを入力">
+        </div>
+        <div class="form-group">
+            <label for="text_font">Fontを選ぶ</label>
+            <select class="form-control" id="text_font" name="text_font">
+                <option value="arial">Arial</option>
+                <option value="helvetica" selected>Helvetica</option>
+                <option value="myriad pro">Myriad Pro</option>
+                <option value="delicious">Delicious</option>
+                <option value="verdana">Verdana</option>
+                <option value="georgia">Georgia</option>
+                <option value="courier">Courier</option>
+                <option value="comic sans ms">Comic Sans MS</option>
+                <option value="impact">Impact</option>
+                <option value="monaco">Monaco</option>
+                <option value="optima">Optima</option>
+                <option value="hoefler text">Hoefler Text</option>
+                <option value="plaster">Plaster</option>
+                <option value="engagement">Engagement</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="text_color">色を選ぶ</label>
+            <input class="form-control" type="color" id="text_color" size="10">
+        </div>
+        <div class="form-group">
+            <label for="size_select">サイズを選ぶ</label>
+            <input type="range" class="custom-range" min="1" max="200" id="size_select">
+        </div>
+        <button type="submit" class="btn btn-primary">挿入</button>
+    </form>
+</div>

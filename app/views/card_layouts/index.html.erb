@@ -1,0 +1,13 @@
+<div id="<%= "#{parent_class}-page" %>" >
+    <div class="title text-center"><h2>カードレイアウトを選んでください</h2></div>
+    <div class="card__layout--list d-flex flex-row flex-md-row flex-sm-column justify-content-center justify-content-sm-center align-items-end mt-5">
+        <% @card_layouts.each do |clayout| %>
+            <%= link_to cards_path(layout_id:clayout.id, uid: @current_user.id), class:"item--layout", remote: true, method: :post do %>
+                <div class="thumb" style="width:<%= clayout.width/5 %>px; height:<%= clayout.height/5 %>px">
+                    <i class="layout--icon ti-<%= clayout.tag %>" style="line-height:<%= clayout.height/5 %>px;"></i>
+                </div>
+                <span class="description" style="width:<%= clayout.width/5 %>px;"><%= clayout.name %></span>
+            <% end %>
+        <% end %>
+    </ul>
+</div>

@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "pages#index", page: :home
+  get :privacy, to: "pages#index", page: :privacy
+
+  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/failure", to: "sessions#failure"
+  delete :logout, to: "sessions#destroy"
+  get :layouts, to: "card_layouts#index"
+  post "layout/change", to: "card_layouts#change"
+  post :add, to: "resources#add"
+  get :upload, to: "upload#index"
+  resources :cards
+  resources :resources
 end

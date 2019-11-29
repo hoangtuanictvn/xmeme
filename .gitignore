@@ -50,4 +50,16 @@ node_modules/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/database.yml
 .DS_Store
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Local run and build script
+local.sh
+/public/resources

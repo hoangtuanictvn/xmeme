@@ -1,0 +1,7 @@
+<% if @layout.present? %>
+if (window.CANVAS) {
+    var canvas = window.CANVAS;
+    canvas.setHeight(<%= @layout.height * @layout.ratio %>);
+    canvas.setWidth(<%= @layout.width * @layout.ratio %>);
+}
+<% end %>

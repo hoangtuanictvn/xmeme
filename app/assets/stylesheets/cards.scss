@@ -1,0 +1,174 @@
+.editor__wrapper {
+    height: calc(100vh - 52px);
+    position: relative;
+    width: 100%;
+    background: #e7e7e77a;
+    .side__bar--wrapper {
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background: #fff;
+        border-right: 1px solid #dddddd;
+        display: flex;
+        z-index: 998;
+        .element-selector {
+            padding: 10px;
+            height: 100%;
+            background: #fff;
+            border-right: 1px solid #e7e7e79d;
+            .top_menu {
+                margin-bottom: 15px;
+            }
+            .add__more--resources {
+                font-size: 30px;
+                font-weight: 700;
+                color: #ffffff;
+                border-radius: 50px;
+                transition: ease-in-out 0.3s;
+                padding: 5px;
+                background:  #3e7ff8;
+                &:hover{
+                    background: #1969fd;
+                }
+            }
+            .component__select {
+                font-size: 50px;
+                padding: 0px 0px 0px 5px !important;
+                color:  #b9b9b9;
+                transition: ease-in-out 0.3s;
+                &:hover{
+                    color: #3e7ff8;
+                }
+            }
+        }
+        .element-detail {
+            height: 100%;
+            background: #fff;
+            overflow-y: scroll;
+            .holder_text {
+                margin-top: 40px;
+                span {
+                    font-size: 12px;
+                    font-weight: 200;
+                }
+            }
+            .list__images {
+                padding: 10px;
+                .menu_action{
+                    cursor: pointer;
+                }
+                .list--item {
+                    display: block;
+                    padding: 5px;
+                    transition: ease-in-out 0.3s;
+                    margin: 3px;
+                    cursor: pointer;
+                    background: rgb(247, 247, 247);
+                    &:hover {
+                        background: rgb(223, 222, 222);
+                    }
+                    .item--image {
+                        width: 160px;
+                    }
+                }
+            }
+        }
+    }
+    .card--editor{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .content--place{
+            border: 1px solid #c3c3c3;
+        }
+    }
+}
+
+.card-list {
+    margin-top: 30px;
+    .link{
+        text-decoration: none;
+    }
+    .card{
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+        &:hover {
+            box-shadow: 1px 1px 8px 1px #6b6b6b38;
+        }
+    }
+    .add-new-card{
+        height: 100%;
+        background: #fff;
+        .plus-button {
+            background: #3e7ff8;
+            padding: 15px 22px 15px 22px;
+            color: #fff;
+            border-radius: 50px;
+            display: inline;
+            margin: auto;
+            font-size: 30px;
+            transition: ease-in-out 0.3s;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    .card-top {
+        background-color: rgba(0,0,0,.7);
+        height: 120px;
+        display: flex;
+        position: relative;
+        background-size: 150%;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        overflow: hidden;
+        -webkit-mask-image: -webkit-radial-gradient(#fff,#000);
+        mask-image: -webkit-radial-gradient(#fff,#000);
+        .card-img-top {
+            height: 100%;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            transition: all 0.25s ease-in-out;
+            -webkit-filter: blur(20px) brightness(.8) saturate(1.6);
+            filter: blur(20px) brightness(.8) saturate(1.6);
+            -webkit-transform: scale(1.5) translateZ(0);
+            transform: scale(1.5) translateZ(0);
+        }
+        .thumb{
+            height: 70%;
+            z-index: 99;
+            margin: auto;
+        }
+        .top-menu{
+            background: #fff;
+            padding: 5px 5px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 30px;
+            line-height: 0 !important;
+            transition: ease-in-out 0.3s;
+            &:hover {
+                background: rgb(243, 243, 243);
+            }
+            .menu-anchor{
+                position: relative;
+                .action-list{
+                    position: absolute;
+                    list-style: none;
+                }
+            }
+        }
+    }
+    .card-body{
+        padding: 2px 10px;
+    }
+}
