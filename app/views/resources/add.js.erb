@@ -5,7 +5,7 @@ if(element_detail){
         case "image":
             element_detail.html('<%= j render partial: "list_image", locals:{resources: @resources, sticker: @type == "sticker"} if @type == "image" || @type == "sticker"%>');
             if(window.CANVAS){
-                imageInsertDelegate(window.CANVAS)
+              imageInsertDelegate(window.CANVAS)
             }
             break;
         case "template":
