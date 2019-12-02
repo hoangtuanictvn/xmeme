@@ -4,9 +4,8 @@
 // that code so it'll be compiled.
 
 // import 'jquery/dist/jquery.slim'
-import 'bootstrap/dist/js/bootstrap.bundle'
-import 'popper.js/dist/esm/popper'
-//import 'konva'
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'popper.js/dist/esm/popper';
 import 'fabric'
 require("./draw.engine")
 require("./utilities")

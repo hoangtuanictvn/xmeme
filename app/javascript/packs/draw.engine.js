@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function() {
+
     var cardEditor = $('.card--editor');
+    // $("input.jsTextSlider").slider();
     var cardFormat = cardEditor.data('card-format');
     var cardId = cardEditor.data("card-id");
 
@@ -76,7 +78,6 @@ window.updateCardLayoutTrigger = function(){
 }
 
 function onObjectSelected(obj) {
-    console.log(obj.target.get('meta_tag'))
     switch(obj.target.get('meta_tag')){
         case "image": handleImageObject(obj); break;
         case "sticker": handleStickerObject(obj); break;
