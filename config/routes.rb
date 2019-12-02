@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "layout/change", to: "card_layouts#change"
   post :add, to: "resources#add"
   get :upload, to: "upload#index"
+  delete :drop_resource, to: "upload#drop_resource"
   resources :cards
   resources :resources
 end

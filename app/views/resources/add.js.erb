@@ -100,13 +100,14 @@ function textEditableDelegate(canvas){
             e.preventDefault()
             var textContent = $(e.target).find('input#text_content').val()
             var textFont = $(e.target).find('select#text_font').val()
-            var textSize = $(e.target).find('input#text_size').val()
+            var textSize = $(e.target).find('input#size_select').val()
             var textColor = $(e.target).find('input#text_color').val()
             console.log(textContent+"|"+textFont + "|" + textSize + "|" + textColor)
             activeObject.set({
                 text: textContent,
                 fontFamily: textFont,
-                fill: textColor
+                fill: textColor,
+                fontSize: textSize
             });
             canvas.renderAll()
         });
@@ -118,13 +119,12 @@ function textNewDelegate(canvas){
         e.preventDefault()
         var textContent = $(e.target).find('input#text_content').val()
         var textFont = $(e.target).find('select#text_font').val()
-        var textSize = $(e.target).find('input#text_size').val()
+        var textSize = $(e.target).find('input#size_select').val()
         var textColor = $(e.target).find('input#text_color').val()
-        //var textAlign = $(e.target).find('input#text_size').val()
-        console.log(textColor)
+
         var text = new fabric.IText(textContent, { 
             fontFamily: textFont,
-            size: 14,
+            fontSize: textSize,
             left: 10,
             top: 100,
             fill: textColor

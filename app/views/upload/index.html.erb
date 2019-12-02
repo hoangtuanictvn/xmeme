@@ -12,4 +12,9 @@
         <%= f.select :card_layout_id, @layout_options, class:"form-control"%>
     </div>
     <button type="submit" >Upload</button>
+    <ul>
+        <% @resources.each do |resource| %>
+            <li><%= link_to " Delete: [#{resource.id}]", drop_resource_path(id: resource.id ), method: :delete, remote: true %></li>
+        <% end %>
+    </ul>
 <% end %>
