@@ -15,9 +15,9 @@
         .top--nav{
             width: 100%;
             height: 100vh;
-            background: linear-gradient(180deg, $white, rgba(0,0,0,0) 50%),
-                        linear-gradient(90deg, $white, rgba(0,0,0,0) 30%),
-                        linear-gradient(-90deg, $white, rgba(0,0,0,0) 30%);
+            background: linear-gradient(#fff, rgba(241, 241, 241, 0) 62.18%, rgba(0, 0, 0, 0) 85.29%),
+                        linear-gradient(to right, #fff, rgba(255, 255, 255, 0) 42.02%),
+                        linear-gradient(4.68rad, #fff 7.14%, rgba(255, 255, 255, 0) 51.26%)
         }
     }
     .panel--right{
