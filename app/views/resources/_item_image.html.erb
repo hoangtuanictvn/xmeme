@@ -1,0 +1,10 @@
+<div class="card resource-<%= resource.id %>">
+    <div class="card-top">
+        <div class="user-image-thumb" style="background: url('<%= resource.container.standard.url %>');">
+            <div class="d-flex flex-row resource--top__menu justify-content-end">
+                <a class="delete jsResourceDelete" data-id="<%= resource.id %>" title="削除"><i class="ti-close"></i></a>
+                <a class="insert jsResourceImageInsert" title="挿入" data-raw="<%= resource.container.url %>" data-type="<%= resource.resource_type %>"><i class="ti-anchor"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

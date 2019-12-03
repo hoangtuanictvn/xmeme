@@ -54,11 +54,14 @@ node_modules/
 .DS_Store
 
 /public/packs
+/public/uploads
 /public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+local_console.sh
 
 # Local run and build script
 local.sh

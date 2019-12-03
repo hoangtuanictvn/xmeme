@@ -2,19 +2,20 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-
-// import 'jquery/dist/jquery.slim'
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'popper.js/dist/esm/popper';
-import 'fabric'
-require("./draw.engine")
-require("./utilities")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("jquery")
+import jquery from 'jquery';
+import $ from 'jquery';
+import jQuery from 'jquery';
+window.$ = window.jquery = window.jQuery = jquery;
 
+import 'bootstrap/dist/js/bootstrap.min'
+import 'fabric'
+import 'dropzone'
+import './draw'
+import './utilities'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
