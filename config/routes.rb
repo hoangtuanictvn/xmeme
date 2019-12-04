@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   get :upload, to: "upload#index"
   delete :drop_resource, to: "upload#drop_resource"
   resources :cards
-  resources :resources
+  resources :resources do
+    post :upload, on: :collection
+    post :load, on: :collection
+  end
 end

@@ -12,6 +12,7 @@ class CardsController < BaseNavigationController
         @card = Card.find_by id: params[:id]
         @layout = @card.card_layout
         @layouts = CardLayout.all
+        @resource = Resource.new
     end
 
     def update
