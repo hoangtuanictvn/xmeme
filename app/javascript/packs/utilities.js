@@ -40,6 +40,7 @@ $(document).on('turbolinks:load', function() {
                                 </div>\
                             </div>'
                         )
+                        
                         $('.nav-tabs a#picture-tab').tab('show')
                         initDeleteResource('.jsResourceDelete.rnew')
                         setInterval(function(){
