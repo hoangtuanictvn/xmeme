@@ -62,6 +62,7 @@ yarn-debug.log*
 .yarn-integrity
 
 local_console.sh
+local.sh
 
 # Local run and build script
 local.sh
