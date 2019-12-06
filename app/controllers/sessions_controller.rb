@@ -2,8 +2,13 @@ class SessionsController < ApplicationController
     def create
         auth = request.env["omniauth.auth"]
         ident = Identify.find_by_omniauth auth
+        p auth.to_json
         unless ident.present?
-            ident = Identify.new provider: auth['provider'], uid: auth['uid']
+            ident = Identify.new provider: auth['provider'], 
+                uid: auth['uid'], 
+                access_token: auth['credentials']['token'],
+                token_secret: auth['credentials']['secret'],
+                expired: auth['credentials']['expires_at']
             if ident.save
                 unless ident.try(:user).present?
                     user = User.create_by_omniauth auth

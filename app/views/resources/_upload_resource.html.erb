@@ -1,4 +1,4 @@
-<div class="modal fade" id="resourceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="resourceModal" tabindex="-1" data-card-id="<%= card.id %>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -43,7 +43,13 @@
               <% end %>
             </div>
           </div>
-          <div class="tab-pane fade" id="music" role="tabpanel" aria-labelledby="music-tab">音楽の一覧</div>
+          <div class="tab-pane fade" id="music" role="tabpanel" aria-labelledby="music-tab">
+            <ul class="resource-music">
+              <% @current_user.resources.select{|r| r.resource_type == "music"}.each do |resource| %>
+                <%= render partial: "resources/item_music", locals:{resource: resource} %>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="modal-footer">

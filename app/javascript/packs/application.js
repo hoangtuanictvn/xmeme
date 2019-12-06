@@ -14,8 +14,8 @@ window.$ = window.jquery = window.jQuery = jquery;
 import 'bootstrap/dist/js/bootstrap.min'
 import 'fabric'
 import 'dropzone'
-import './draw'
 import './utilities'
+import './draw'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_064452) do
+ActiveRecord::Schema.define(version: 2019_12_06_032744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 2019_12_03_064452) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.integer "music_resource_id"
+    t.time "start_at"
+    t.time "end_at"
   end
 
   create_table "identifies", force: :cascade do |t|
@@ -50,6 +53,9 @@ ActiveRecord::Schema.define(version: 2019_12_03_064452) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "access_token"
+    t.string "token_secret"
+    t.datetime "expired"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_064452) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "file_name"
   end
 
   create_table "users", force: :cascade do |t|

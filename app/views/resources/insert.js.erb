@@ -1,0 +1,13 @@
+<% if @resource.present? %>
+var musicEditContainer = $('.music--edit-container');
+if(musicEditContainer){
+    $('.jsAudioSource').attr('src', '<%= @resource.try(:container).try(:url) %>')
+    musicEditContainer.removeClass('hiden')
+    if(window.PLAYER){
+        window.PLAYER.player.load();
+        window.PLAYER.player.pause();
+        window.PLAYER.togglePlay();
+    }
+}
+$('#resourceModal').modal('hide')
+<% end %>

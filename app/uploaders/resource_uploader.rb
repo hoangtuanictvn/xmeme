@@ -17,6 +17,10 @@ class ResourceUploader < CarrierWave::Uploader::Base
     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end
 
+  def normal_name
+    "#{original_filename}" if original_filename.present?
+  end
+
   protected
   def secure_token(length=16)
     var = :"@#{mounted_as}_secure_token"

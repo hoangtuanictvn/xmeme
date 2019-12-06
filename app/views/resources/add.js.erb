@@ -65,7 +65,7 @@ function imageInsertDelegate(canvas){
                 img.scaleToHeight(canvas.height/2);
                 img.scaleToWidth(canvas.width/2);
                 canvas.add(img)
-            });
+            }, { crossOrigin: 'Anonymous' });
         });
     })
 
@@ -85,7 +85,7 @@ function imageInsertDelegate(canvas){
                     scaleY: canvas.height / img.height
                 });
                 canvas.fire('background:change', { target: 'image' });
-            });
+            }, { crossOrigin: 'Anonymous' });
         });
     })
 }

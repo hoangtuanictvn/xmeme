@@ -36,8 +36,11 @@
             <%= render partial: "resources/list_layout", locals:{layouts: @layouts} %>
         </div>
     </div>
-    <div class="card--editor" data-card-id="<%= @card.id %>" data-card-format="<%= @card.format.to_json %>">
-        <canvas class="content--place" id="edit__content--place" width="<%= @layout.width*@layout.ratio %>px" height="<%= @layout.height*@layout.ratio %>px">
+    <div class="card--editor" data-card-id="<%= @card.id %>" data-card-format="<%= @card.format.to_json %>" data-lyt="<%= {width: @layout.width, height: @layout.height, ratio: @layout.ratio}.to_json %>">
+        <div class="canvas">
+            <canvas class="content--place" id="edit__content--place" width="<%= @layout.width*@layout.ratio %>" height="<%= @layout.height*@layout.ratio %>">
+        </div>
     </div>
+    <%= render partial:"music_edit", locals: { card: @card } %>
 </div>
-<%= render partial: "resources/upload_resource", locals:{resource: @resource} %>
+<%= render partial: "resources/upload_resource", locals:{resource: @resource, card: @card} %>

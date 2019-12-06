@@ -1,0 +1,16 @@
+<div class="music--edit-container <%= "hiden" if card.music.nil? %>">
+    <div class="row align-items-center justify-content-center">
+        <!--div class="music-info col-md-auto">
+            <a class="play-button">
+                <i class="ti-control-play"></i>
+            </a>
+        </div-->
+        <div class="progress-info col-md-12">
+            <div class="audio-player">
+                <audio>
+                    <source class="jsAudioSource" src="<%= card.try(:music).try(:container).try(:url) %>" type="audio/mp3" />
+                </audio>
+            </div>
+        </div>
+    </div>
+</div>
