@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post :add, to: "resources#add"
   get :upload, to: "upload#index"
   delete :drop_resource, to: "upload#drop_resource"
+  resources :shares
   resources :cards
   resources :resources do
     post :upload, on: :collection

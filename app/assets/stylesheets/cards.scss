@@ -246,3 +246,24 @@
         }
     }
 }
+
+.share-social__list{
+    a{
+        cursor: pointer;
+        text-decoration: none;
+        padding: 7px 8px;
+        margin: 0px 3px;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1.2rem;
+        i {
+            color: #fff;
+        }
+    }
+    .facebook{
+        background: #1969fd;
+    }
+    .twitter{
+        background: #4988fd;
+    }
+}

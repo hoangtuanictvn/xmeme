@@ -67,3 +67,4 @@ local.sh
 # Local run and build script
 local.sh
 /public/resources
+/storage/*.png

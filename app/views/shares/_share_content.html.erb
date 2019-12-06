@@ -1,0 +1,11 @@
+<small class="mb-3">リンクをコピーして、共住します。</small>
+    <div class="input-group px-3 mt-3">
+    <input type="text" class="form-control jsShareData" value="<%= "#{share_url(id: card.code)}.png" %>">
+    <div class="input-group-append">
+        <button class="btn btn-primary jsCopyShareURL" type="button">コピー</button>
+    </div>
+    </div>
+    <div class="share-social__list mt-3" >
+    <a class="facebook jsFacebookShare" data-resource="<%= "#{share_url(id: card.code)}.png" %>"><i class="ti-facebook"></i></a>
+    <a class="twitter jsTweet" data-resource="<%= "#{share_url(id: card.code)}.png" %>"><i class="ti-twitter"></i></a>
+</div>

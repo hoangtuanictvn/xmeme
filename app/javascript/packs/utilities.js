@@ -4,6 +4,8 @@ import 'green-audio-player/src/scss/main'
 
 
 $(document).on('turbolinks:load', function() {
+    var cardEditor = $('.card--editor');
+    var cardId = cardEditor.data("card-id");
     $(".jsDropzone").dropzone({
         url: "/resources/upload",
         paramName: 'resource[container]',
@@ -80,9 +82,26 @@ $(document).on('turbolinks:load', function() {
       FB.init({
         appId: '716252648881594',
         xfbml: true,
-        version: 'v3.0'
+        version: 'v2.8'
       });
     });
+
+    $('.jsShare').on('click', function(e){
+        e.preventDefault()
+        $('#shareModal').modal('show')
+        $.ajax({
+            method: 'POST',
+            url: '/shares',
+            data: {
+                card_id: cardId
+            }
+        })
+    })
+    $('.jsCopyShareURL').on('click', function(){
+        var textBox = $(".jsShareData");
+        textBox.select();
+        document.execCommand("copy");
+    })
 });
 
 var initDeleteResource = function(select){
