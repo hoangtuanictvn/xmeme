@@ -1,0 +1,7 @@
+<li class="d-flex flex-row audio-detail resource-<%= resource.id %>">
+    <a class="name"><i class="ti-music"></i> <%= resource.file_name %></a>
+    <div class="ml-auto resource--top__menu">
+        <a class="delete jsResourceDelete" data-id="<%= resource.id %>" title="削除"><i class="ti-close"></i></a>
+        <a class="insert jsResourceAudioChange" title="挿入" data-res-id="<%= resource.id %>"><i class="ti-anchor"></i></a>
+    </div>
+</li>

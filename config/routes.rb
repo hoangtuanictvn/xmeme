@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :resources do
     post :upload, on: :collection
     post :load, on: :collection
+    post :insert, on: :collection
   end
 end

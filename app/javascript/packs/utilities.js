@@ -1,4 +1,8 @@
 import 'dropzone'
+import green from 'green-audio-player'
+import 'green-audio-player/src/scss/main'
+
+
 $(document).on('turbolinks:load', function() {
     $(".jsDropzone").dropzone({
         url: "/resources/upload",
@@ -28,7 +32,7 @@ $(document).on('turbolinks:load', function() {
                                     <div class=\"user-image-thumb\" style=\"background: url(\''+response.container.standard.url+'\');\" data-type=\"'+response.type+'\">\
                                         <div class=\"d-flex flex-row resource--top__menu justify-content-end\">\
                                             <a class=\"delete jsResourceDelete rnew\" data-id=\"'+response.id+'\" title=\"削除\"><i class=\"ti-close\"></i></a>\
-                                            <a class=\"insert jsResourceImageInsert\" title=\"挿入\" data-raw=\"'+response.container.url+'\" data-type=\"'+resource.type+'\"><i class=\"ti-anchor\"></i></a>\
+                                            <a class=\"insert jsResourceImageInsert rnew\" title=\"挿入\" data-raw=\"'+response.container.url+'\" data-type=\"'+response.type+'\"><i class=\"ti-anchor\"></i></a>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -39,10 +43,20 @@ $(document).on('turbolinks:load', function() {
                         setInterval(function(){
                             $('.jsResourceCard').removeClass('new')
                         }, 1000)
+                        initInserResource('.jsResourceImageInsert.rnew')
                         break;
                     case "music":
+                        $('.resource-music').prepend('\
+                            <li class="d-flex flex-row audio-detail resource-'+ response.id +'">\
+                            <a class="name"><i class="ti-music"></i>'+ response.file_name +'</a>\
+                            <div class="ml-auto resource--top__menu">\
+                                <a class="delete jsResourceDelete" data-id="'+ response.id +'" title="削除"><i class="ti-close"></i></a>\
+                                <a class="insert jsResourceAudioChange rnew" title="挿入" data-res-id="'+ response.id +'"><i class="ti-anchor"></i></a>\
+                            </div>\
+                            </li>\
+                        ')
+                        initChangeAudioResource('.jsResourceAudioChange.rnew')
                         $('.nav-tabs a#music-tab').tab('show')
-                        initInserResource('.jsResourceImageInsert.rnew')
                         break;
                     default : break;
                 }
@@ -51,6 +65,24 @@ $(document).on('turbolinks:load', function() {
     });
     initDeleteResource('.jsResourceDelete')
     initInserResource('.jsResourceImageInsert')
+    initChangeAudioResource('.jsResourceAudioChange')
+    var player = window.PLAYER;
+    if(!player){
+        var playerContainer = document.querySelector('.audio-player');
+        if(playerContainer){
+            player = new green(playerContainer)
+            window.PLAYER = player;
+        }
+    }
+
+    $.ajaxSetup({ cache: true });
+    $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+      FB.init({
+        appId: '716252648881594',
+        xfbml: true,
+        version: 'v3.0'
+      });
+    });
 });
 
 var initDeleteResource = function(select){
@@ -83,10 +115,30 @@ var initInserResource = function(select){
                         img.scaleToHeight(canvas.height/2);
                         img.scaleToWidth(canvas.width/2);
                         canvas.add(img)
-                    });
+                    }, { crossOrigin: 'Anonymous' });
                 }
             }
             $('#resourceModal').modal('hide')
+        });
+    })
+}
+
+var initChangeAudioResource = function(select){
+    $(select).each(function(obj){
+        $(this).on('click', function(e){
+            e.preventDefault()
+            var cardId = $('#resourceModal').data('card-id');
+            var resId = $(this).data('res-id');
+            if(cardId){
+                $.ajax({
+                    method: 'POST',
+                    url: '/resources/insert',
+                    data:{
+                        card_id: cardId,
+                        resource_id: resId
+                    }
+                });
+            }
         });
     })
 }

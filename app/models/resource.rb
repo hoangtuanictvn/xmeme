@@ -1,6 +1,7 @@
 class Resource < ApplicationRecord
     belongs_to :card_layout, optional: true
     belongs_to :user, optional: true
+    has_many :cards
     mount_uploader :container, ResourceUploader
     enum resource_type: [:image, :sticker, :font, :music, :text]
     after_initialize :set_default_type, if: :new_record?
@@ -15,6 +16,7 @@ class Resource < ApplicationRecord
             else
                 self.resource_type = nil
             end
+            self.file_name = File.basename(container.normal_name, ".*") if container.normal_name.present?
         end
     end
 

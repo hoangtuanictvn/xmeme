@@ -19,7 +19,7 @@ class ResourcesController < ApplicationController
         @resource = Resource.new user_resources_params
         if @resource.save
             @resource.reload
-            render json: { success: true, id: @resource.id, container: @resource.container, type: @resource.resource_type}, status: :created
+            render json: { success: true, id: @resource.id, file_name: @resource.file_name, container: @resource.container, type: @resource.resource_type}, status: :created
         else
             render json: { success: false, errors: @resource.errors }, status: :unprocessable_entity
         end
@@ -33,8 +33,15 @@ class ResourcesController < ApplicationController
     end
 
     def insert
-        # @type = params[:type]
-        # return if @type.nil?
+        @card = Card.find_by id: params[:card_id]
+        @resource = Resource.find_by id: params[:resource_id]
+        return unless @card.present? && @resource.present?
+        case @resource.resource_type
+        when "music"
+            @card.update_attributes music_resource_id: @resource.id
+        else
+        end
+        RenderStatusChannel.broadcast_to(@current_user, @resource)
     end
     
     def destroy
