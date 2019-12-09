@@ -4,16 +4,15 @@ $(document).on('turbolinks:load', function() {
     // $("input.jsTextSlider").slider();
     var cardFormat = cardEditor.data('card-format');
     var cardId = cardEditor.data("card-id");
-    var layoutData = cardEditor.data('lyt');
 
     if(!window.CANVAS && cardEditor){
-        var canvas = new fabric.Canvas('edit__content--place');
+        var canvas = new fabric.Canvas('edit__content--place',{});
         canvas.selectionColor = 'rgba(0,255,0,0.3)';
         canvas.backgroundColor = 'rgb(255,255,255)';
         canvas.selectionBorderColor = 'red';
         canvas.selectionLineWidth = 5;
         window.CANVAS = canvas;
-    } else {
+    }else{
         canvas = window.CANVAS
     }
     
@@ -25,21 +24,6 @@ $(document).on('turbolinks:load', function() {
     }
 
     var link = $('.jsActionSaveImage')
-
-    // link.on('click', function(e){
-    //     e.preventDefault()
-    //     // $.ajax({
-    //     //     type: 'POST',
-    //     //     dataType: 'json',
-    //     //     url: 'http://localhost:4000/render',
-    //     //     data: {
-    //     //         "ratio": layoutData.ratio,
-    //     //         "height": layoutData.height,
-    //     //         "width": layoutData.width,
-    //     //         "format": JSON.parse(cardFormat)
-    //     //     }
-    //     // })
-    // })
     
     var canvasModifiedCallback = function(payload) {
         link.attr("href", canvas.toDataURL());
@@ -69,7 +53,26 @@ $(document).on('turbolinks:load', function() {
 
     $('.jsFacebookShare').on('click', function(e){
         e.preventDefault()
-        sharefbimage()
+        console.log('clik')
+        var source = $(this).data('resource');
+        FB.ui(
+            {
+                method: 'send',
+                name: 'Xmeme Facebook share',
+                href: source,
+                link: source,
+                picture: source,
+                caption: 'Type your meme',
+                description: 'Xmeme | Merry Chirstmas'
+            },
+            function (response) {
+                if (response && response.post_id) {
+                    
+                } else {
+                    
+                }
+            }
+        );
     });
 
     canvas.on('object:added', canvasModifiedCallback);
@@ -81,27 +84,6 @@ $(document).on('turbolinks:load', function() {
     canvas.on('selection:cleared', hidenEditControl);
     window.updateCardLayoutTrigger()
 });
-
-function sharefbimage() {
-    FB.ui(
-        {
-            method: 'feed',
-            name: 'Facebook Dialogs',
-            href: $('.jsActionSaveImage').attr('href'),
-            link: 'https://xmeme.herokuapp.com',
-            picture: $('.jsActionSaveImage').attr('href'),
-            caption: 'Ishelf Book',
-            description: 'your description'
-        },
-        function (response) {
-            if (response && response.post_id) {
-                
-            } else {
-                
-            }
-        }
-    );
-}
 
 window.updateCardLayoutTrigger = function(){
     var cardEditor = $('.card--editor');

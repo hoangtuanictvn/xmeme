@@ -1,0 +1,8 @@
+<% if @rerender %>
+$('.jsShareModalBody').html('<%= j render partial:"shares/share_content", locals: {card: @card} %>')
+$('.jsCopyShareURL').on('click', function(){
+    var textBox = $(".jsShareData");
+    textBox.select();
+    document.execCommand("copy");
+})
+<% end %>
