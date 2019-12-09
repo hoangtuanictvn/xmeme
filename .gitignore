@@ -55,7 +55,10 @@ node_modules/
 
 /public/packs
 /public/uploads
+/public/resources
+/public/videos
 /public/packs-test
+/storage/*.png
 /node_modules
 /yarn-error.log
 yarn-debug.log*
@@ -63,8 +66,11 @@ yarn-debug.log*
 
 local_console.sh
 local.sh
+local_sidekiq.sh
+
+/storage
+
+dump.rdb
 
 # Local run and build script
 local.sh
-/public/resources
-/storage/*.png

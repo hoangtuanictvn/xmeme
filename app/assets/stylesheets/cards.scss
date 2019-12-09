@@ -101,6 +101,19 @@
         &:hover {
             box-shadow: 1px 1px 8px 1px #6b6b6b38;
         }
+        .progress{
+            position: absolute;
+            height: 0.3rem;
+            bottom: 0px;
+            width: 100%;
+            z-index: 9999;
+            overflow: hidden;
+            background-color: #0000004f;
+            border-radius: 0px 0px 3px 3px;
+            &.hidden{
+                display: none;
+            }
+        }
     }
     .add-new-card{
         height: 100%;
@@ -125,8 +138,7 @@
         display: flex;
         position: relative;
         background-size: 150%;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
+        border-radius: 3px;
         overflow: hidden;
         -webkit-mask-image: -webkit-radial-gradient(#fff,#000);
         mask-image: -webkit-radial-gradient(#fff,#000);

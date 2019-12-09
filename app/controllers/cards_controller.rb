@@ -22,6 +22,15 @@ class CardsController < BaseNavigationController
         end
     end
 
+    def generate
+        @card = Card.find_by id: params[:card_id]
+        return unless @card.music.present?
+        if @card.present? && (@card.success? || @card.nonqueue?)
+            @card.update_attributes render_status: :pending
+            VideoRenderWorker.perform_async(@current_user.id, @card.id)
+        end
+    end
+
     def destroy
         @card = Card.find_by id: params[:id]
         if @card.present?

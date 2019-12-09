@@ -19,6 +19,9 @@ class ResourcesController < ApplicationController
         @resource = Resource.new user_resources_params
         if @resource.save
             @resource.reload
+            if params[:resource_type] == "sticker"
+                @resource.update_attributes resource_type: :sticker
+            end
             render json: { success: true, id: @resource.id, file_name: @resource.file_name, container: @resource.container, type: @resource.resource_type}, status: :created
         else
             render json: { success: false, errors: @resource.errors }, status: :unprocessable_entity
@@ -41,7 +44,6 @@ class ResourcesController < ApplicationController
             @card.update_attributes music_resource_id: @resource.id
         else
         end
-        RenderStatusChannel.broadcast_to(@current_user, @resource)
     end
     
     def destroy

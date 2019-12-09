@@ -5,6 +5,7 @@
  *= require cards
  *= require card_layouts
  *= require resources
+ *= require story
  *= require ./lib/bootstrap-social
  *= require ./lib/themify-icons
  *= require_self

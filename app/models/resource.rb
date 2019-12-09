@@ -9,12 +9,11 @@ class Resource < ApplicationRecord
 
     def update_asset_attributes
         if container.present? && container_changed?
-            if %w{jpg png jpg gif bmp}.include?(container.file.extension)
-                self.resource_type = "image"
-            elsif %w{mp3 wav}.include?(container.file.extension)
+            # if %w{jpg png jpg gif bmp}.include?(container.file.extension)
+            #     self.resource_type = "image"
+            # els
+            if %w{mp3 wav}.include?(container.file.extension)
                 self.resource_type = "music"
-            else
-                self.resource_type = nil
             end
             self.file_name = File.basename(container.normal_name, ".*") if container.normal_name.present?
         end
