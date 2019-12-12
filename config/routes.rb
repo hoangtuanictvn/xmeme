@@ -10,8 +10,15 @@ Rails.application.routes.draw do
   post :add, to: "resources#add"
   get :upload, to: "upload#index"
   delete :drop_resource, to: "upload#drop_resource"
-  resources :shares
-  resources :cards
+  
+  resources :shares do
+    get :story
+  end
+
+  resources :cards do
+    post :generate
+  end
+
   resources :resources do
     post :upload, on: :collection
     post :load, on: :collection

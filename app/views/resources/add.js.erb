@@ -24,6 +24,7 @@ if(element_detail){
             }
             break;
         case "music":
+            addMusicDelegate();
             break;
         default: break;
     }
@@ -52,6 +53,11 @@ if(element_detail){
     text.set('meta_tag','text');
     canvas.add(text);
 } %>
+
+function addMusicDelegate(){
+    $('#resourceModal').modal('show')
+    $('.nav-tabs a#music-tab').tab('show')
+}
 
 function imageInsertDelegate(canvas){
     $('.jsInsertImage').each(function(e){

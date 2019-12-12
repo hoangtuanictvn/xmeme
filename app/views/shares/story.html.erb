@@ -1,0 +1,16 @@
+<div class="story d-flex justify-content-center">
+    <div class="story--bg" style="background: url(<%= @card.thumb %>); background-size: cover;"></div>
+    <div class="story--content d-flex justify-content-lg-end">
+        <div class="d-flex flex-row story--menu justify-content-end">
+            <a class="action jsActionPlay playing"><i class="ti-control-play"></i></a>
+            <a class="action"><i class="ti-download"></i></a>
+        </div>
+        <img class="story--image" src="<%= @card.thumb %>"/>
+        <div class="progress story-progress">
+            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    <audio class="story-player" autoplay>
+        <source class="jsAudioSource" src="<%= @card.try(:music).try(:container).try(:url) %>" type="audio/mp3">
+    </audio>
+</div>

@@ -10,12 +10,31 @@
         <div class="navbar__menu--right navbar-expand">
             <% if editor %>
                 <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                    <li class="nav-item jsSaveProgress jsSaveProgress-<%= @card.id if @card.present? %> <%= "hidden" if @card.nonqueue? || @card.render_status.nil? %>">
+                        <a href="<%= "/videos/video_#{@current_user.id}_#{@card.id}.mp4" if @card.success? %>" class="progress mx-auto progress--circle-<%= @card.id if @card.present? %>" <%= "download" if @card.success? %>>
+                            <span class="progress-left">
+                                <span class="progress-bar border-primary"></span>
+                            </span>
+                            <span class="progress-right">
+                                <span class="progress-bar border-primary"></span>
+                            </span>
+                            <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center jsDownloadVideo">
+                                <div class="small jsProgressText">
+                                    <% if @card.success? %>
+                                        <i class="ti-download"></i>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown action jsSave">
                         <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="saveAction">
                             <i class="ti-save"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="saveAction" >
-                            <a class="dropdown-item" href="#" data-layout-id="<%= @layout.id if @layout.present? %>" data-user-id="<%= @current_user.id if @current_user.present? %>"><i class="ti-video-clapper"></i> ビデオを保存する</a>
+                            <%= link_to card_generate_path(@card), class:"dropdown-item", data: {"layout-id": @layout.try(:id), "user-id": @current_user.try(:id)}, method: :post, remote: true do %>
+                            <i class="ti-video-clapper"></i> ビデオを保存する
+                            <% end %>
                             <a class="dropdown-item jsActionSaveImage"><i class="ti-image"></i> JPGを保存する</a>
                         </div>
                     </li>

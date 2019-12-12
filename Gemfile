@@ -19,6 +19,10 @@ gem 'font-awesome-sass', '~> 5.11.2'
 gem 'carrierwave', '~> 1.3.1'
 gem 'omniauth-rails_csrf_protection'
 gem 'cloudinary'
+gem 'redis'
+gem 'streamio-ffmpeg'
+gem 'sidekiq'
+gem 'sidekiq-status'
 
 # gem 'image_processing', '~> 1.2'
 

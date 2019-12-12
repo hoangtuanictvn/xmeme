@@ -1,8 +1,8 @@
 <ul class="nav flex-column list__images">
-    <% resources&.each do |resource| %>
+    <% resources.try(:each) do |resource| %>
         <li class="nav-item dropright">
             <a class="list--item" id="image-<%= resource.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag resource.container.standard.url, class:"item--image" , crossorigin: "anonymous"%>
+              <%= image_tag resource.try(:container).try(:standard).url, class:"item--image" , crossorigin: "anonymous"%>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item menu_action jsInsertImage" data-image-cdn="<%= resource.container.url %>" data-type="<%= resource.resource_type %>"><i class="ti-gallery"></i> 挿入</a>

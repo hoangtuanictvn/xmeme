@@ -25,6 +25,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="progress progress-<%= card.id %> <%= "hidden" unless (card.inprogress? || card.pending?) %>">
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                     <!--div class="card-body">
                         <span class="card-title">Card name</span>
                     </div-->
