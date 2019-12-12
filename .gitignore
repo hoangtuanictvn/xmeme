@@ -54,7 +54,7 @@ node_modules/
 
 /public/packs
 /public/uploads
-/public/uploads/*
+/public/uploads/tmp
 /public/resources
 /public/videos
 /public/packs-test
