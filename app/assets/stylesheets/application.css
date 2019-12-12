@@ -8,5 +8,6 @@
  *= require story
  *= require ./lib/bootstrap-social
  *= require ./lib/themify-icons
+ *= require ./lib/player/main
  *= require_self
  */
