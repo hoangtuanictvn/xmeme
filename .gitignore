@@ -68,7 +68,7 @@ local_console.sh
 local.sh
 local_sidekiq.sh
 
-/storage
+/storage/*.png
 
 dump.rdb
 
