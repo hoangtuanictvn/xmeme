@@ -19,7 +19,6 @@ $(document).on('turbolinks:load', function() {
     if(cardFormat){
         canvas.loadFromJSON(JSON.parse(cardFormat), canvas.renderAll.bind(canvas), function(o, obj){
             obj.cornerStyle = 'circle'
-            console.log(obj)
             mapObjectAttribute(obj)
         });
     }
