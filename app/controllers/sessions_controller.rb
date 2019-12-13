@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    before_action :signed_in?
+    
     def create
         auth = request.env["omniauth.auth"]
         ident = Identify.find_by_omniauth auth

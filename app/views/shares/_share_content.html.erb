@@ -6,6 +6,6 @@
     </div>
     </div>
     <div class="share-social__list mt-3" >
-    <a class="facebook jsFacebookShare" data-resource="<%= "#{share_url(id: card.code)}.png" %>"><i class="ti-facebook"></i></a>
+    <a class="facebook jsFacebookShare" data-story="<%= share_story_url(share_id: card.code) %>" data-resource="<%= "#{share_url(id: card.code)}.png" %>"><i class="ti-facebook"></i></a>
     <a class="twitter jsTweet" data-resource="<%= "#{share_url(id: card.code)}.png" %>"><i class="ti-twitter"></i></a>
 </div>

@@ -5,4 +5,26 @@ $('.jsCopyShareURL').on('click', function(){
     textBox.select();
     document.execCommand("copy");
 })
+$('.jsFacebookShare').on('click', function(e){
+        e.preventDefault()
+        var source = $(this).data('story');
+        FB.ui(
+            {
+                method: 'send',
+                name: 'Xmeme Facebook share',
+                href: source,
+                link: source,
+                picture: source,
+                caption: 'Type your meme',
+                description: 'Xmeme | Merry Chirstmas'
+            },
+            function (response) {
+                if (response && response.post_id) {
+                    
+                } else {
+                    
+                }
+            }
+        );
+    });
 <% end %>
