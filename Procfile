@@ -1,2 +1,2 @@
 web: rails server -p $PORT -e $RAILS_ENV
-sidekiq: sidekiq -c 2
+worker: bundle exec sidekiq -c 2
