@@ -2,6 +2,7 @@ class VideoRenderWorker
   include Sidekiq::Worker
   sidekiq_options queue: :default
   sidekiq_options retry: 2
+
   def perform(user_id, card_id)
     begin
       card = Card.find_by id: card_id
