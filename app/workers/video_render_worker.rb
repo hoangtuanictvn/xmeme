@@ -11,7 +11,6 @@ class VideoRenderWorker
       output = File.new("#{Rails.root}/public/videos/video_#{user_id}_#{card_id}.mp4", "wb")
       output.close
       movie = FFMPEG::Movie.new(card.music.container.url)
-      # -ss 00:00:00 -t 60
       transcode_options = "-loop 1 -i #{image} -c:a aac -strict experimental -b:a 192k -pix_fmt yuv420p -vf fps=20 -movflags +faststart -shortest".strip.split(/\s+/)
       card.update_attributes render_status: :inprogress
       movie.transcode(output.path, {custom: transcode_options}){ |process|
