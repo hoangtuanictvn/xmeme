@@ -1,13 +1,13 @@
 verbose: true
-concurrency: 10
+concurrency: 3
 pidfile: ./tmp/pids/sidekiq.pid
 logfile: ./log/sidekiq.log
 queues:
   - default
   - low
 production:
-  concurrency: 25
+  concurrency: 2
 development:
-  concurrency: 15
+  concurrency: 5
 staging:
-  concurrency: 15
+  concurrency: 2
