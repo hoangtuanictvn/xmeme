@@ -31,6 +31,12 @@ class CardsController < BaseNavigationController
         end
     end
 
+    def detach_music
+        @card = Card.find_by id: params[:card_id]
+        return unless @card.music.present?
+        @card.update_attributes music_resource_id: nil
+    end
+
     def destroy
         @card = Card.find_by id: params[:id]
         if @card.present?

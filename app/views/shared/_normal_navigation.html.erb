@@ -11,7 +11,7 @@
             <% if editor %>
                 <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                     <li class="nav-item jsSaveProgress jsSaveProgress-<%= @card.id if @card.present? %> <%= "hidden" if @card.nonqueue? || @card.render_status.nil? %>">
-                        <a href="<%= "/videos/video_#{@current_user.id}_#{@card.id}.mp4" if @card.success? %>" class="progress mx-auto progress--circle-<%= @card.id if @card.present? %>" <%= "download" if @card.success? %>>
+                        <a href="<%= @card.url if @card.success? %>" class="progress mx-auto progress--circle-<%= @card.id if @card.present? %>" <%= "download" if @card.success? %>>
                             <span class="progress-left">
                                 <span class="progress-bar border-primary"></span>
                             </span>

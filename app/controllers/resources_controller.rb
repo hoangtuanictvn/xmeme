@@ -8,13 +8,7 @@ class ResourcesController < ApplicationController
             flash[:now] = "Errors"
         end
     end
-
-    def index
-    end
-
-    def load
-    end
-
+    
     def upload
         @resource = Resource.new user_resources_params
         if @resource.save

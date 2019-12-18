@@ -54,14 +54,14 @@ $(document).on('turbolinks:load', function() {
 
     $('.jsFacebookShare').on('click', function(e){
         e.preventDefault()
-        console.log('clik')
         var source = $(this).data('resource');
+        var story = $(this).data('story');
         FB.ui(
             {
                 method: 'send',
                 name: 'Xmeme Facebook share',
                 href: source,
-                link: source,
+                link: story,
                 picture: source,
                 caption: 'Type your meme',
                 description: 'Xmeme | Merry Chirstmas'
