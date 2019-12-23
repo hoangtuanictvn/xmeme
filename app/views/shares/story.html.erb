@@ -21,7 +21,7 @@
             <a class="action jsActionPlay playing"><i class="ti-control-play"></i></a>
             <%= link_to "#{share_url(id: @card.code)}.mp4",class:"action" do %><i class="ti-download"></i><% end %>
         </div>
-        <img class="story--image" src="<%= "#{card_thumb_url(card)}.png" %>"/>
+        <img class="story--image" src="<%= "#{card_thumb_url(@card)}.png" %>"/>
         <div class="progress story-progress">
             <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
