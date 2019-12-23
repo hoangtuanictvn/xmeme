@@ -4,42 +4,22 @@
 <% end %>
 <div class="story d-flex justify-content-center">
     <div class="snowflakes" aria-hidden="true">
-  <div class="snowflake">
-  ❅
-  </div>
-  <div class="snowflake">
-  ❅
-  </div>
-  <div class="snowflake">
-  ❆
-  </div>
-  <div class="snowflake">
-  ❄
-  </div>
-  <div class="snowflake">
-  ❅
-  </div>
-  <div class="snowflake">
-  ❆
-  </div>
-  <div class="snowflake">
-  ❄
-  </div>
-  <div class="snowflake">
-  ❅
-  </div>
-  <div class="snowflake">
-  ❆
-  </div>
-  <div class="snowflake">
-  ❄
-  </div>
-</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+    </div>
     <div class="story--bg" style="background: url(<%= @card.thumb %>); background-size: cover;"></div>
     <div class="story--content d-flex justify-content-lg-end">
         <div class="d-flex flex-row story--menu justify-content-end">
             <a class="action jsActionPlay playing"><i class="ti-control-play"></i></a>
-            <a class="action"><i class="ti-download"></i></a>
+            <%= link_to "#{share_url(id: @card.code)}.mp4",class:"action" do %><i class="ti-download"></i><% end %>
         </div>
         <img class="story--image" src="<%= @card.thumb %>"/>
         <div class="progress story-progress">
@@ -49,4 +29,7 @@
     <audio class="story-player" autoplay>
         <source class="jsAudioSource" src="<%= @card.try(:music).try(:container).try(:url) %>" type="audio/mp3">
     </audio>
+    <div class="watermark text-center">
+        <span class="md-b">Made with <i class="ti-heart"></i> by <%= @card.user.name %></span><br/><span class="pwd-b">Powered by <%= link_to "Xmeme", root_url %></span>
+    </div>
 </div>
