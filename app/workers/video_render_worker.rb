@@ -31,4 +31,5 @@ class VideoRenderWorker
       ActionCable.server.broadcast "render_status_user:#{user_id}", {id: card.id, progress: 0, status: card.render_status, url: card.url, message: e.message}.to_json
     end
   end
+  
 end
