@@ -33,7 +33,7 @@ class SharesController < ApplicationController
 
     def story
         @card = Card.find_by code: params[:share_id]
-        redirect_to root_path unless @card.present?
+        redirect_to root_path and return unless @card.present?
         unless valid_card? @card, params[:share_id]
             Cloudinary::Uploader.destroy(@card.code) unless @card.code.nil?
             @card.update_attributes code: nil, expired: nil
