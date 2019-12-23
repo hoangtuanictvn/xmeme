@@ -31,6 +31,13 @@ class CardsController < BaseNavigationController
         end
     end
 
+    def thumb
+        card = Card.find_by id: params[:card_id]
+        respond_to do |format|
+            format.png { send_data(Base64.decode64(card.thumb.gsub('data:image/png;base64,','')), {type: "image/png", disposition: "inline"})}
+        end
+    end
+
     def detach_music
         @card = Card.find_by id: params[:card_id]
         return unless @card.music.present?

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :cards do
     post :generate
     post :detach_music
+    get :thumb
   end
 
   resources :resources do
