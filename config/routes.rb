@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post :add, to: "resources#add"
   get :upload, to: "upload#index"
   delete :drop_resource, to: "upload#drop_resource"
+<<<<<<< Updated upstream
   
   resources :shares do
     get :story
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
     post :detach_music
   end
 
+=======
+  resources :shares
+  resources :cards
+>>>>>>> Stashed changes
   resources :resources do
     post :upload, on: :collection
     post :load, on: :collection

@@ -78,6 +78,7 @@ $(document).on('turbolinks:load', function() {
     }
 
     $.ajaxSetup({ cache: true });
+
     $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
       FB.init({
         appId: '716252648881594',
