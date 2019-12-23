@@ -27,6 +27,7 @@ class SharesController < ApplicationController
         respond_to do |format|
             format.html
             format.png { send_data(open(card.data).read, {type: "image/png", disposition: "inline"})}
+            format.mp4 { send_data(open(card.url).read, :disposition => 'inline', :stream => true) }
         end
     end
 
