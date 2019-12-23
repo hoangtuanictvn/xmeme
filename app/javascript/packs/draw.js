@@ -54,23 +54,14 @@ $(document).on('turbolinks:load', function() {
 
     $('.jsFacebookShare').on('click', function(e){
         e.preventDefault()
-<<<<<<< Updated upstream
         var source = $(this).data('resource');
         var story = $(this).data('story');
-=======
-        console.log('clik')
-        var source = $(this).data('resource');
->>>>>>> Stashed changes
         FB.ui(
             {
                 method: 'send',
                 name: 'Xmeme Facebook share',
                 href: source,
-<<<<<<< Updated upstream
                 link: story,
-=======
-                link: source,
->>>>>>> Stashed changes
                 picture: source,
                 caption: 'Type your meme',
                 description: 'Xmeme | Merry Chirstmas'
