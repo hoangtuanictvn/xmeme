@@ -19,7 +19,7 @@
                                 <span class="progress-bar border-primary"></span>
                             </span>
                             <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center jsDownloadVideo">
-                                <div class="small jsProgressText">
+                                <div class="small jsProgressText-<%= @card.id %>">
                                     <% if @card.success? %>
                                         <i class="ti-download"></i>
                                     <% end %>

@@ -15,7 +15,6 @@ consumer.subscriptions.create("RenderStatusChannel", {
     console.log(data)
     var progress = JSON.parse(data)
     var circleProgressContainer = $('.jsSaveProgress-'+progress.id)
-    var jsProgressText = $('.jsProgressText')
     if(progress.status == "inprogress"){
       var progContainer = $('.progress-'+progress.id);
       if(!progContainer.hasClass('inprogress')){
@@ -26,6 +25,7 @@ consumer.subscriptions.create("RenderStatusChannel", {
         circleProgressContainer.removeClass('hidden')
         circleProgressContainer.addClass('inprogress')
       }
+      var jsProgressText = $('.jsProgressText-'+progress.id)
       jsProgressText.html('<small>'+parseFloat((progress.progress).toFixed(1))+'%<\/small>')
     }
     $('.progress-'+progress.id + ' .progress-bar').css('width', progress.progress+'%').attr('aria-valuenow', progress.progress)
@@ -46,6 +46,7 @@ consumer.subscriptions.create("RenderStatusChannel", {
 });
 
 var updateCircleProgress = function(value, card_id) {
+  console.log(card_id)
   $(".progress--circle-"+card_id).each(function() {
     var left = $(this).find('.progress-left .progress-bar');
     var right = $(this).find('.progress-right .progress-bar');

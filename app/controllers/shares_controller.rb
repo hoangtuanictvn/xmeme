@@ -18,10 +18,10 @@ class SharesController < ApplicationController
 
         redirect_to root_path unless card.present?
 
-        unless valid_card card, params[:id]
+        unless valid_card? card, params[:id]
             Cloudinary::Uploader.destroy(card.code) unless card.code.nil?
             card.update_attributes code: nil, expired: nil
-            redirect_to root_path
+            redirect_to story_card
         end
 
         respond_to do |format|
@@ -33,7 +33,7 @@ class SharesController < ApplicationController
     def story
         @card = Card.find_by code: params[:share_id]
         redirect_to root_path unless @card.present?
-        unless valid_card @card, params[:share_id]
+        unless valid_card? @card, params[:share_id]
             Cloudinary::Uploader.destroy(@card.code) unless @card.code.nil?
             @card.update_attributes code: nil, expired: nil
             redirect_to root_path
@@ -45,12 +45,9 @@ class SharesController < ApplicationController
         return true if des_time.nil?
         return DateTime.now > des_time
     end
-<<<<<<< Updated upstream
 
-    def valid_card card, token
+    def valid_card? card, token
         card_valid = Digest::SHA1.hexdigest("#{card.user.id}|#{card.id}|#{card.expired}")
         return card_valid.eql? token
     end
-=======
->>>>>>> Stashed changes
 end
