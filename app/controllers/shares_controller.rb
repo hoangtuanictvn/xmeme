@@ -11,7 +11,7 @@ class SharesController < ApplicationController
             end
         end
         if @card.code
-            ImageRenderService.render(@card)
+            ImageRenderService.render_image(@card)
         end
     end
     
