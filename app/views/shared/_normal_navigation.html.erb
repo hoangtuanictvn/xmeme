@@ -35,7 +35,7 @@
                             <%= link_to card_generate_path(@card), class:"dropdown-item", data: {"layout-id": @layout.try(:id), "user-id": @current_user.try(:id)}, method: :post, remote: true do %>
                             <i class="ti-video-clapper"></i> ビデオを保存する
                             <% end %>
-                            <a class="dropdown-item jsActionSaveImage"><i class="ti-image"></i> JPGを保存する</a>
+                            <a class="dropdown-item jsActionSaveImage" data-cid="<%= "#{@current_user.name}_card_#{@card.id}_" %>""><i class="ti-image"></i> JPGを保存する</a>
                         </div>
                     </li>
                     <li class="nav-item action jsShare">

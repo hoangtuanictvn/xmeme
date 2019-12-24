@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function() {
     
     var canvasModifiedCallback = function(payload) {
         link.attr("href", canvas.toDataURL());
-        link.attr("download","painting.png");
+        link.attr("download",link.data('cid')+Date.now());
         if(cardId){
             $.ajax({
                 type: "PATCH", 
@@ -75,6 +75,13 @@ $(document).on('turbolinks:load', function() {
             }
         );
     });
+
+    $('.jsTweet').on('click', function(e) {
+        e.preventDefault();
+        var story = $(this).data('story');
+        var twitterWindow = window.open('https://twitter.com/share?url=' + story, 'twitter-popup', 'height=350,width=600');
+        if(twitterWindow.focus) { twitterWindow.focus(); }
+    })
 
     canvas.on('object:added', canvasModifiedCallback);
     canvas.on('object:removed', objectRemovedCallback);

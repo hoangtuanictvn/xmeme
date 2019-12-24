@@ -1,3 +1,7 @@
+<% content_for :share_content do %>
+    <meta property='og:image' content="<%= "#{share_url(id: @card.code)}.png" %>"/>
+    <meta name="twitter:image" content="<%= "#{share_url(id: @card.code)}.png" class="next-head"/>
+<% end %>
 <div class="story d-flex justify-content-center">
     <div class="story--bg" style="background: url(<%= @card.thumb %>); background-size: cover;"></div>
     <div class="story--content d-flex justify-content-lg-end">

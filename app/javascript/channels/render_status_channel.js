@@ -15,6 +15,7 @@ consumer.subscriptions.create("RenderStatusChannel", {
     console.log(data)
     var progress = JSON.parse(data)
     var circleProgressContainer = $('.jsSaveProgress-'+progress.id)
+    var jsProgressText = $('.jsProgressText-'+progress.id)
     if(progress.status == "inprogress"){
       var progContainer = $('.progress-'+progress.id);
       if(!progContainer.hasClass('inprogress')){
@@ -25,7 +26,6 @@ consumer.subscriptions.create("RenderStatusChannel", {
         circleProgressContainer.removeClass('hidden')
         circleProgressContainer.addClass('inprogress')
       }
-      var jsProgressText = $('.jsProgressText-'+progress.id)
       jsProgressText.html('<small>'+parseFloat((progress.progress).toFixed(1))+'%<\/small>')
     }
     $('.progress-'+progress.id + ' .progress-bar').css('width', progress.progress+'%').attr('aria-valuenow', progress.progress)
