@@ -10,6 +10,9 @@ class SharesController < ApplicationController
                 @rerender = true
             end
         end
+        if card.code
+            ImageRenderService.render(@card)
+        end
     end
     
     def show
