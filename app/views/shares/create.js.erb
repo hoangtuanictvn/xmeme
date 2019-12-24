@@ -27,4 +27,10 @@ $('.jsFacebookShare').on('click', function(e){
             }
         );
     });
+$('.jsTweet').on('click', function(e) {
+        e.preventDefault();
+        var story = $(this).data('story');
+        var twitterWindow = window.open('https://twitter.com/share?url=' + story, 'twitter-popup', 'height=350,width=600');
+        if(twitterWindow.focus) { twitterWindow.focus(); }
+    })
 <% end %>
