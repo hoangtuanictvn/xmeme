@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
     def create
         auth = request.env["omniauth.auth"]
         ident = Identify.find_by_omniauth auth
-        p auth.to_json
         unless ident.present?
             ident = Identify.new provider: auth['provider'], 
                 uid: auth['uid'], 

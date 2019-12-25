@@ -10,7 +10,7 @@ class SharesController < ApplicationController
                 @rerender = true
             end
         end
-        if @card.code
+        if @card.code != nil
             ImageRenderService.render_image(@card)
         end
     end

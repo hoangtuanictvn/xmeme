@@ -26,7 +26,7 @@ class ResourcesController < ApplicationController
         @type = params[:add]
         @type = "none" if @type.nil?
         @layouts = CardLayout.all
-        @resources = Resource.where(resource_type: @type)
+        @resources = Resource.where(resource_type: @type, user_id: nil)
     end
 
     def insert

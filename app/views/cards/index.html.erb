@@ -11,8 +11,8 @@
             <div class="col-md-3 mb-2">
                 <div class="card">
                     <div class="card-top">
-                        <div class="card-img-top" style="background: url(<%= "#{card_thumb_url(card)}.png" %>)"></div>
-                        <img class="thumb" src="<%= "#{card_thumb_url(card)}.png" %>"/>
+                        <div class="card-img-top" style="background: url(<%= card.thumb.nil? ? asset_url("/images/thumbnail.png") : "#{card_thumb_url(card)}.png" %>)"></div>
+                        <img class="thumb" src="<%= card.thumb.nil? ? asset_url("thumbnail.png") : "#{card_thumb_url(card)}.png" %>"/>
                         <div class="top-menu">
                             <div class="menu-anchor">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="editAction"><i class="ti-more"></i></a>
