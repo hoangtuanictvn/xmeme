@@ -85,6 +85,7 @@
             border: 3px solid #ffffff61;
             width: 40px;
             cursor: pointer;
+            transition: ease-in-out 0.3s;
             &:hover {
                 border: 3px solid #fff;
             }
