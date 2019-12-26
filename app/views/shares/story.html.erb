@@ -19,7 +19,9 @@
     <div class="story--content d-flex justify-content-lg-end">
         <div class="d-flex flex-row story--menu justify-content-end">
             <a class="action jsActionPlay playing"><i class="ti-control-play"></i></a>
-            <%= link_to "#{share_url(id: @card.code)}.mp4",class:"action" do %><i class="ti-download"></i><% end %>
+            <% unless @card.url.nil ? %>
+                <%= link_to "#{share_url(id: @card.code)}.mp4",class:"action" do %><i class="ti-download"></i><% end %>
+            <% end %>
         </div>
         <img class="story--image" src="<%= "#{share_url(id: @card.code)}.png" %>"/>
         <div class="progress story-progress">
