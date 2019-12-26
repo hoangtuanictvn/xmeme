@@ -7,7 +7,6 @@ Bundler.require(*Rails.groups)
 
 module Xmeme
   class Application < Rails::Application
-    config.force_ssl = true
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.active_job.queue_adapter = :sidekiq
