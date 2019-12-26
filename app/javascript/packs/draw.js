@@ -103,7 +103,7 @@ window.updateCardLayoutTrigger = function(){
                     type: "POST", 
                     url: "/layout/change?card_id="+cardId+"&layout_id="+$(this).data('layout-id'),
                     success: function(){
-                        canvasModifiedCallback(null);
+                        
                     }
                 });
             }
