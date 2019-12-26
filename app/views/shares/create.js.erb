@@ -1,4 +1,3 @@
-<% if @rerender %>
 $('.jsShareModalBody').html('<%= j render partial:"shares/share_content", locals: {card: @card} %>')
 $('.jsCopyShareURL').on('click', function(){
     var textBox = $(".jsShareData");
@@ -28,9 +27,8 @@ $('.jsFacebookShare').on('click', function(e){
         );
     });
 $('.jsTweet').on('click', function(e) {
-        e.preventDefault();
-        var story = $(this).data('story');
-        var twitterWindow = window.open('https://twitter.com/share?url=' + story, 'twitter-popup', 'height=350,width=600');
-        if(twitterWindow.focus) { twitterWindow.focus(); }
-    })
-<% end %>
+    e.preventDefault();
+    var story = $(this).data('story');
+    var twitterWindow = window.open('https://twitter.com/share?url=' + story, 'twitter-popup', 'height=350,width=600');
+    if(twitterWindow.focus) { twitterWindow.focus(); }
+})

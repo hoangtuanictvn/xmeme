@@ -2,18 +2,16 @@ class SharesController < ApplicationController
     before_action :signed_in?, only: [:create]
     def create
         @card = Card.find_by id: params[:card_id]
-        @rerender = false
         if is_expired(@card.expired) || @card.code.nil?
             expi = 5.day.from_now
             share_name = Digest::SHA1.hexdigest("#{@card.user_id}|#{@card.id}|#{expi}")
             @card.update_attributes expired: expi, code: share_name
             res = ImageRenderService.render(@card)
             unless res.nil?
-                @card.update_attributes code: res[0], data: res[1]
-                @rerender = true
+                @card.update_attributes data: res[1]
             end
         end
-        if @card.code != nil
+        unless @card.code.nil?
             ImageRenderService.render(@card)
         end
     end
