@@ -25,6 +25,11 @@ class CardsController < BaseNavigationController
     def generate
         @card = Card.find_by id: params[:card_id]
         return unless @card.music.present?
+        if card.code.nil?
+            expi = 5.day.from_now
+            share_name = Digest::SHA1.hexdigest("#{@card.user_id}|#{@card.id}|#{expi}")
+            @card.update_attributes expired: expi, code: share_name
+        end
         if @card.present? && (@card.success? || @card.nonqueue?)
             @card.update_attributes render_status: :pending
             VideoRenderWorker.perform_async(@current_user.id, @card.id)
