@@ -11,6 +11,7 @@ class ImageRenderService
                 public_id: card.code
             })
             File.delete(File.join(path, "#{card.code}.png"));
+            card.update_attributes data: res['secure_url']
             return card.code, res['secure_url']
         end
         return File.join(path, "#{card.code}.png")
