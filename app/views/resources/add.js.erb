@@ -83,6 +83,7 @@ function imageInsertDelegate(canvas){
             fabric.Image.fromURL(imageUrl, function(img){
                 mapObjectAttribute(img)
                 img.set('meta_tag',type)
+                img.set('is_bg', true)
                 canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
                     // Optionally add an opacity lvl to the image
                     backgroundImageOpacity: 0.5,

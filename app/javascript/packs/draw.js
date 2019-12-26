@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function() {
         canvas.loadFromJSON(JSON.parse(cardFormat), canvas.renderAll.bind(canvas), function(o, obj){
             obj.cornerStyle = 'circle'
             mapObjectAttribute(obj)
+            console.log(obj)
         });
     }
 
@@ -102,6 +103,9 @@ window.updateCardLayoutTrigger = function(){
                 $.ajax({
                     type: "POST", 
                     url: "/layout/change?card_id="+cardId+"&layout_id="+$(this).data('layout-id'),
+                    success: function(){
+                        canvasModifiedCallback(null);
+                    }
                 });
             }
         })
@@ -142,7 +146,8 @@ function mapObjectAttribute(object){
     object.toObject = (function(toObject) {
     return function() {
         return fabric.util.object.extend(toObject.call(this), {
-            meta_tag: this.meta_tag
+            meta_tag: this.meta_tag,
+            is_bg: this.is_bg
         });
     };
     })(object.toObject);
