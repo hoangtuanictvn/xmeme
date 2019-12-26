@@ -20,7 +20,6 @@ $(document).on('turbolinks:load', function() {
         canvas.loadFromJSON(JSON.parse(cardFormat), canvas.renderAll.bind(canvas), function(o, obj){
             obj.cornerStyle = 'circle'
             mapObjectAttribute(obj)
-            console.log(obj)
         });
     }
 
