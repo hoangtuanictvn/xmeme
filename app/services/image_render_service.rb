@@ -1,6 +1,8 @@
 class ImageRenderService
-    def self.render card, uploaded=true
-        Cloudinary::Uploader.destroy(card.code) unless card.code.nil?
+    def self.render card, uploaded=true, drop=false
+        if drop
+            Cloudinary::Uploader.destroy(card.code) unless card.code.nil?
+        end
         path = File.join Rails.root, "storage"
         File.mkdir(path) unless File.exist?(path) 
         file = File.open(File.join(path, "#{card.code}.png"), "wb") do|f|

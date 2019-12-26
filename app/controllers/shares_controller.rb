@@ -6,13 +6,13 @@ class SharesController < ApplicationController
             expi = 5.day.from_now
             share_name = Digest::SHA1.hexdigest("#{@card.user_id}|#{@card.id}|#{expi}")
             @card.update_attributes expired: expi, code: share_name
-            res = ImageRenderService.render(@card)
+            res = ImageRenderService.render(@card, true, true)
             unless res.nil?
                 @card.update_attributes data: res[1]
             end
         end
         unless @card.code.nil?
-            ImageRenderService.render(@card)
+            ImageRenderService.render(@card, true, true)
         end
     end
     
