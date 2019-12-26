@@ -25,7 +25,7 @@ class CardsController < BaseNavigationController
     def generate
         @card = Card.find_by id: params[:card_id]
         return unless @card.music.present?
-        if card.code.nil?
+        if @card.code.nil?
             expi = 5.day.from_now
             share_name = Digest::SHA1.hexdigest("#{@card.user_id}|#{@card.id}|#{expi}")
             @card.update_attributes expired: expi, code: share_name

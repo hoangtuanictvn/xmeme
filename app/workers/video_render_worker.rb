@@ -7,7 +7,7 @@ class VideoRenderWorker
     begin
       card = Card.find_by id: card_id
       return unless card.present?
-      image = ImageRenderService.render(card, user_id, false)
+      image = ImageRenderService.render(card, false)
       Dir.mkdir("#{Rails.root}/public/videos") unless File.exists?("#{Rails.root}/public/videos")
       output = File.new("#{Rails.root}/public/videos/video_#{user_id}_#{card_id}.mp4", "wb")
       output.close
