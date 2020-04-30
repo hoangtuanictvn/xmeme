@@ -11,7 +11,7 @@
     "expose-loader": "^0.7.5",
     "fabric": "^3.5.1",
     "green-audio-player": "^1.0.11",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "konva": "^4.0.18",
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0"
